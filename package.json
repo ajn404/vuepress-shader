@@ -1,0 +1,26 @@
+{
+  "name": "vuepress-shader",
+  "version": "0.0.1",
+  "description": "blog for shader",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "shader",
+    "vuepress"
+  ],
+  "author": "ajn404",
+  "license": "ISC",
+  "devDependencies": {
+    "@vuepress/bundler-vite": "^2.0.0-beta.49",
+    "@vuepress/plugin-nprogress": "^2.0.0-beta.49",
+    "vuepress": "^2.0.0-beta.49"
+  },
+  "dependencies": {
+    "@vuepress/types": "^1.9.7",
+    "rollup-plugin-glsl": "^1.3.0"
+  }
+}
