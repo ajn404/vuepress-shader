@@ -1,0 +1,21 @@
+::-webkit-scrollbar{
+    width:1em;
+  }
+  
+  ::-webkit-scrollbar-track{
+    background: #dddddd;
+  }
+  
+  ::-webkit-scrollbar-thumb{
+    background: var(--c-brand);
+  }
+
+  .fullscreen{
+    height: calc( 100vh - var(--navbar-height) );
+  }
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }

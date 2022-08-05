@@ -21,13 +21,13 @@ export default class Sketch {
     init(options: optionsConfig) {
         this.time = 10;
         this.container = options.container;
-        this.width = window.innerWidth;
-        this.height = window.innerHeight;
+        this.width = this.container.clientWidth || window.innerWidth;
+        this.height = this.container.clientHeight || window.innerHeight;
 
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(
             75,
-            window.innerWidth / window.innerHeight,
+            this.width / this.height,
             0.01,
             10
         );
@@ -37,7 +37,7 @@ export default class Sketch {
             antialias: true,
             alpha: true,
         });
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setSize(this.width, this.height);
         this.container.appendChild(this.renderer.domElement);
 
         this.control = new OrbitControls(this.camera, this.renderer.domElement);

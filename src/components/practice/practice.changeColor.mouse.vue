@@ -1,5 +1,5 @@
 <template>
-    <div class="practice_changeColor" ref="container">
+    <div class="practice_changeColor fullscreen" ref="container">
     </div>
 </template>
 
@@ -65,13 +65,13 @@ if ('ontouchstart' in window) {
 
 sketch.resize = function () {
     if (uniforms.u_resolution !== undefined) {
-        uniforms.u_resolution.value.x = window.innerWidth;
-        uniforms.u_resolution.value.y = window.innerHeight;
+        uniforms.u_resolution.value.x = this.width;
+        uniforms.u_resolution.value.y = this.height;
     }
 
-    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(this.width, this.height);
     this.render();
 
 }

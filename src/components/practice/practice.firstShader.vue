@@ -1,5 +1,5 @@
 <template>
-    <div class="practice_firstShader" ref="container">
+    <div class="practice_firstShader fullscreen" ref="container">
     </div>
 </template>
 
