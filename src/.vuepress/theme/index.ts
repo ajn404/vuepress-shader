@@ -3,7 +3,7 @@ import { defaultTheme } from 'vuepress'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
 import { path } from '@vuepress/utils'
 
-export const localTheme = (options: DefaultThemeOptions): Theme => {
+const localTheme = (options: DefaultThemeOptions): Theme => {
   return {
     name: 'vuepress-theme-local',
     extends: defaultTheme(options),
@@ -12,3 +12,5 @@ export const localTheme = (options: DefaultThemeOptions): Theme => {
     },
   }
 }
+
+export default localTheme;

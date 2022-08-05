@@ -1,6 +1,10 @@
 import * as THREE from "three";
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 
+interface optionsConfig {
+    container:HTMLElement
+}
+
 export default class Sketch {
     time: number;
     geometry: any;
@@ -14,7 +18,7 @@ export default class Sketch {
     height: any;
     control: any;
 
-    init(options:any) {
+    init(options:optionsConfig) {
         this.time = 10;
         this.container = options.container;
         this.width = window.innerWidth;
@@ -49,6 +53,7 @@ export default class Sketch {
         this.mesh.rotation.x += this.time / 1000;
         this.mesh.rotation.y += this.time / 1000;
         this.render();
+        if(this.container.getBoundingClientRect().width>0)
         requestAnimationFrame(this.animate.bind(this));
     }
 

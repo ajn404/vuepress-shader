@@ -16,4 +16,7 @@ import ParentLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue"
     padding: 0;
     margin: 0;
 }
+:deep(.page-meta){
+    display: none;
+}
 </style>

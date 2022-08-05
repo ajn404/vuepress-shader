@@ -31,8 +31,8 @@ const uniforms = {
         value: new THREE.Color(0x00fff0)
     }
 };
-let s = new Sketch();
-s.addObject = function () {
+let sketch = new Sketch();
+sketch.addObject = function () {
     this.geometry = new THREE.PlaneGeometry(2, 2);
     this.material = new THREE.ShaderMaterial(
         {
@@ -46,22 +46,24 @@ s.addObject = function () {
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.scene.add(this.mesh);
 };
-s.animate = function () {
+sketch.animate = function () {
     this.render();
+    if(this.container.getBoundingClientRect().width>0)
     requestAnimationFrame(this.animate.bind(this));
-};
-s.move = function (evt: any) {
+    else return;
+    };
+sketch.move = function (evt: any) {
     uniforms.u_mouse.value.x = evt.touches ? evt.touches[0].clientX : evt.clientX;
     uniforms.u_mouse.value.y = evt.touches ? evt.touches[0].clientY : evt.clientY;
 };
 
 if ('ontouchstart' in window) {
-    document.addEventListener('touchmove', s.move);
+    document.addEventListener('touchmove', sketch.move);
 } else {
-    document.addEventListener('mousemove', s.move);
+    document.addEventListener('mousemove', sketch.move);
 }
 
-s.resize = function () {
+sketch.resize = function () {
     if (uniforms.u_resolution !== undefined) {
         uniforms.u_resolution.value.x = window.innerWidth;
         uniforms.u_resolution.value.y = window.innerHeight;
@@ -78,7 +80,7 @@ nextTick(() => {
     const options = {
     container: container.value || document.body
     };
-    s.init(options);
+    sketch.init(options);
 })
 
 

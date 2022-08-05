@@ -1,9 +1,9 @@
 import { defineUserConfig } from '@vuepress/cli';
 import { viteBundler } from '@vuepress/bundler-vite';
-import { head } from './config/head.config';
-import  viteConfig  from './config/vite.config';
+import head  from './config/head.config';
+import viteConfig  from './config/vite.config';
 import navbar from './config/nav.config';
-import { localTheme } from './theme'
+import localTheme  from './theme';
 
 
 export default defineUserConfig({
