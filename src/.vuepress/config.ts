@@ -1,13 +1,11 @@
-import { defineUserConfig } from '@vuepress/cli'
+import { defineUserConfig } from '@vuepress/cli';
 import { viteBundler } from '@vuepress/bundler-vite';
-
 import { head } from './config/head.config';
 import { viteConfig } from './config/vite.config';
 
 export default defineUserConfig({
-    title: ' ',
+    title: 'glsl',
     description: 'shader!',
-    head,
     base: '/',
     open: true,    
     host: '0.0.0.0',
@@ -17,5 +15,7 @@ export default defineUserConfig({
         {
             viteOptions:viteConfig
         }
-    )
+    ),
+    head,
+
 });
