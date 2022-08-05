@@ -7,3 +7,7 @@ home : true
 <ClientOnly>
 <home></home>
 </ClientOnly>
+
+<ClientOnly>
+<practice.changeColor></practice.changeColor>
+</ClientOnly>
