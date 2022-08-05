@@ -41,5 +41,8 @@ export const viteConfig = {
             include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         }),
     ],
+    ssr: {
+        noExternal: ['three']
+    },
     
 }
