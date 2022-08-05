@@ -1,21 +1,17 @@
 <template>
-    <div class="practice_changeColor">
-        <div ref="container"></div>
+    <div class="practice_changeColor" ref="container">
     </div>
 </template>
 
 <script lang="ts" setup>
 import Sketch from "@scripts/practice.setup.ts";
 import * as THREE from "three";
-import { ref } from "vue";
+import { ref, nextTick } from "vue";
 import fs from '@shaders/practice/changeColor/fragment.glsl'
 import vs from '@shaders/practice/changeColor/vertex.glsl'
-console.log(fs)
 
 const container = ref(null);
-const options = {
-    container: container.value || document.body
-};
+
 const uniforms = {
 
     u_time: { value: 0.0 },
@@ -35,12 +31,11 @@ const uniforms = {
         value: new THREE.Color(0x00fff0)
     }
 };
-let s = new Sketch(options);
+let s = new Sketch();
 s.addObject = function () {
     this.geometry = new THREE.PlaneGeometry(2, 2);
     this.material = new THREE.ShaderMaterial(
         {
-            // wireframe: true,
             uniforms: uniforms,
             side: THREE.DoubleSide,
 
@@ -78,6 +73,13 @@ s.resize = function () {
     this.render();
 
 }
-s.init(options);
+
+nextTick(() => {
+    const options = {
+    container: container.value || document.body
+    };
+    s.init(options);
+})
+
 
 </script>
