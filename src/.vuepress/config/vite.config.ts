@@ -5,7 +5,7 @@ const { path } = require('@vuepress/utils');
 const resolve = (dir:any) => {
     return path.resolve(__dirname, dir)
 };
-export const viteConfig = {
+const viteConfig = {
     resolve:{
         alias:{
             '@':resolve('../'),
@@ -43,6 +43,7 @@ export const viteConfig = {
     ],
     ssr: {
         noExternal: ['three']
-    },
-    
+    },  
 }
+
+export default viteConfig
