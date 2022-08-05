@@ -9,7 +9,9 @@ export const viteConfig = {
     resolve:{
         alias:{
             '@':resolve('../'),
-            'components':resolve('../../components'),
+            '@components':resolve('../../components'),
+            '@scripts':resolve('../../scripts'),
+            '@shaders':resolve('../../shaders'),
         }
     },
     css: {
