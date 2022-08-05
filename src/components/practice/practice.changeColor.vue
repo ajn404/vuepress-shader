@@ -6,7 +6,7 @@
 <script lang="ts" setup>
 import Sketch from "@scripts/practice.setup.ts";
 import * as THREE from "three";
-import { ref, nextTick } from "vue";
+import { ref, nextTick ,onUnmounted } from "vue";
 import fs from '@shaders/practice/changeColor/fragment.glsl'
 import vs from '@shaders/practice/changeColor/vertex.glsl'
 
@@ -82,6 +82,13 @@ nextTick(() => {
     };
     sketch.init(options);
 })
+
+onUnmounted(()=>{
+    sketch.beforeDestroy();
+})
+
+
+
 
 
 </script>

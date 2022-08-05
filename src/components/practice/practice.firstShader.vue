@@ -5,7 +5,7 @@
 
 <script lang="ts" setup>
 import Sketch from "@scripts/practice.setup.ts";
-import { ref, nextTick } from "vue";
+import { ref, nextTick,onUnmounted } from "vue";
 const container = ref(null);
 let sketch = new Sketch();
 nextTick(() => {
@@ -13,6 +13,10 @@ nextTick(() => {
     container: container.value || document.body
     };
     sketch.init(options);
+})
+
+onUnmounted(()=>{
+    sketch.beforeDestroy();
 })
 
 

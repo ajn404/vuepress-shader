@@ -1,8 +1,8 @@
 import * as THREE from "three";
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 interface optionsConfig {
-    container:HTMLElement
+    container: HTMLElement
 }
 
 export default class Sketch {
@@ -18,7 +18,7 @@ export default class Sketch {
     height: any;
     control: any;
 
-    init(options:optionsConfig) {
+    init(options: optionsConfig) {
         this.time = 10;
         this.container = options.container;
         this.width = window.innerWidth;
@@ -35,7 +35,7 @@ export default class Sketch {
 
         this.renderer = new THREE.WebGLRenderer({
             antialias: true,
-            alpha:true,
+            alpha: true,
         });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.container.appendChild(this.renderer.domElement);
@@ -53,8 +53,9 @@ export default class Sketch {
         this.mesh.rotation.x += this.time / 1000;
         this.mesh.rotation.y += this.time / 1000;
         this.render();
-        if(this.container.getBoundingClientRect().width>0)
-        requestAnimationFrame(this.animate.bind(this));
+        if (this.container.getBoundingClientRect().width > 0)
+            requestAnimationFrame(this.animate.bind(this));
+        else return;
     }
 
     render() {
@@ -87,6 +88,35 @@ export default class Sketch {
         );
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.scene.add(this.mesh);
+    }
+
+    beforeDestroy() {
+        const disposeChild = (mesh: any) => {
+            if (mesh instanceof THREE.Mesh) {
+                if (mesh.geometry?.dispose) {
+                    mesh.geometry.dispose();
+                }
+                if (mesh.material?.dispose) {
+                    mesh.material.dispose();
+                }
+                if (mesh.material?.texture?.dispose) {
+                    mesh.material.texture.dispose();
+                }
+            }
+            if (mesh instanceof THREE.Group) {
+                mesh.clear();
+            }
+            if (mesh instanceof THREE.Object3D) {
+                mesh.clear();
+            }
+        }
+        this.scene.traverse((item: any) => {
+            disposeChild(item);
+        })
+        THREE.Cache.clear();
+        this.scene.clear();
+        this.renderer.dispose();
+        this.renderer.forceContextLoss();
     }
 }
 
