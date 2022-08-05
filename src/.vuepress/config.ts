@@ -9,7 +9,7 @@ import localTheme  from './theme';
 export default defineUserConfig({
     title: 'glsl',
     description: 'shader!',
-    base: '/',
+    base: '/vuepress-shader/',
     open: true,    
     host: '0.0.0.0',
     port: 9999,
