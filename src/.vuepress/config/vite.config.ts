@@ -1,10 +1,21 @@
-import { defineConfig, loadEnv } from 'vite'
+// import { defineConfig, loadEnv } from 'vite'
 
 //@ts-ignore
 import glsl from 'rollup-plugin-glsl';
 
 
+const { path } = require('@vuepress/utils')
+
+const resolve = (dir:any) => {
+    return path.resolve(__dirname, dir)
+}
+
 export const viteConfig = {
+    resolve:{
+        alias:{
+            '@':resolve('')
+        }
+    },
     css: {
         postcss: {
             plugins: [
