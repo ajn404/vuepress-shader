@@ -21,7 +21,9 @@ export default defineUserConfig({
     ),
     theme:localTheme({
         navbar:navbar,
-        sidebar:false
+        sidebar:false,
+        logo:'',
+        logoDark:''
     })
 
 });
