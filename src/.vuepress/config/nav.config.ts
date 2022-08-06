@@ -22,8 +22,12 @@ const practice : NavbarGroup [] = [
                         link:`${practiceBaseUrl}changeColor_time`
                     },
                     {
-                        text:'混合颜色(渐变色)',
-                        link:`${practiceBaseUrl}blendingColor`
+                        text:'uniforms混合颜色(渐变色)',
+                        link:`${practiceBaseUrl}blendingColorUniforms`
+                    },
+                    {
+                        text:'varyings混合颜色(渐变色)',
+                        link:`${practiceBaseUrl}blendingColorVaryings`
                     }
                 ]
             }
