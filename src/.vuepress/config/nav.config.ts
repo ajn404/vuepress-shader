@@ -20,6 +20,10 @@ const practice : NavbarGroup [] = [
                     {
                         text:'时间绘制平面颜色',
                         link:`${practiceBaseUrl}changeColor_time`
+                    },
+                    {
+                        text:'混合颜色(渐变色)',
+                        link:`${practiceBaseUrl}blendingColor`
                     }
                 ]
             }

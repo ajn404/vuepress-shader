@@ -1,0 +1,98 @@
+<template>
+    <div class="practice_blendingColor fullscreen" ref="container">
+    </div>
+</template>
+
+<script lang="ts" setup>
+import Sketch from "@scripts/practice.setup.ts";
+import * as THREE from "three";
+import { ref, nextTick ,onUnmounted } from "vue";
+import fs from '@shaders/practice/blendingColor/fragment.glsl'
+import vs from '@shaders/practice/blendingColor/vertex.glsl'
+
+const container = ref(null);
+
+const uniforms = {
+
+    u_time: { value: 0.0 },
+    u_mouse: {
+        value: {
+            x: 0.0,
+            y: 0.0
+        }
+    },
+    u_resolution: {
+        value: {
+            x: 0.0,
+            y: 0.0
+        }
+    },
+    u_color: {
+        value: new THREE.Color(0x00fff0)
+    }
+};
+
+const clock = new THREE.Clock();
+
+let sketch = new Sketch();
+sketch.addObject = function () {
+    this.geometry = new THREE.PlaneGeometry(2, 2);
+    this.material = new THREE.ShaderMaterial(
+        {
+            uniforms: uniforms,
+            side: THREE.DoubleSide,
+
+            fragmentShader: fs,
+            vertexShader: vs,
+        }
+    );
+    this.mesh = new THREE.Mesh(this.geometry, this.material);
+    this.scene.add(this.mesh);
+};
+sketch.animate = function () {
+    this.render();
+    uniforms.u_time.value = clock.getElapsedTime();
+    if(this.container.getBoundingClientRect().width>0)
+    requestAnimationFrame(this.animate.bind(this));
+    else return;
+    };
+sketch.move = function (evt: any) {
+    uniforms.u_mouse.value.x = evt.touches ? evt.touches[0].clientX : evt.clientX;
+    uniforms.u_mouse.value.y = evt.touches ? evt.touches[0].clientY : evt.clientY;
+};
+
+if ('ontouchstart' in window) {
+    document.addEventListener('touchmove', sketch.move);
+} else {
+    document.addEventListener('mousemove', sketch.move);
+}
+
+sketch.resize = function () {
+    if (uniforms.u_resolution !== undefined) {
+        uniforms.u_resolution.value.x = this.width;
+        uniforms.u_resolution.value.y = this.height;
+    }
+
+    this.camera.aspect = this.width / this.height;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(this.width, this.height);
+    this.render();
+
+}
+
+nextTick(() => {
+    const options = {
+    container: container.value || document.body
+    };
+    sketch.init(options);
+})
+
+onUnmounted(()=>{
+    sketch.beforeDestroy();
+})
+
+
+
+
+
+</script>
