@@ -15,7 +15,7 @@ void main(){
     vec2 uv = gl_FragCoord.xy/u_resolution;
     //uv.y:片元垂直位置的权重
     //自下而上
-    vec3 color = mix(vec3(1.0,1.0,0),vec3(0,0,1.0),uv.y);
+    vec3 color = mix(vec3(228./255.,181./255.,163./255.),vec3(0.,0.,0),uv.y);
     // mix(x,y,a) = x*(1-a)+y*a
 
     gl_FragColor = vec4(color ,1.0 );
