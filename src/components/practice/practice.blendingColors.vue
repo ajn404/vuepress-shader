@@ -6,9 +6,23 @@
 <script lang="ts" setup>
 import Sketch from "@scripts/practice.setup.ts";
 import * as THREE from "three";
-import { ref, nextTick ,onUnmounted } from "vue";
+import { ref, nextTick ,onUnmounted ,defineProps } from "vue";
 import fs from '@shaders/practice/blendingColor/fragment.glsl'
 import vs from '@shaders/practice/blendingColor/vertex.glsl'
+
+
+import varingsFs from '@shaders/practice/blendingColor/varyingFs.glsl';
+import varingsVs from '@shaders/practice/blendingColor/varyingVs.glsl';
+
+const props = defineProps({
+  type:String
+});
+
+let fragmentShader : string = fs,vertexShader:string  = vs;
+if(props.type){
+    fragmentShader = varingsFs;
+    vertexShader = varingsVs;
+}
 
 const container = ref(null);
 
@@ -42,8 +56,8 @@ sketch.addObject = function () {
             uniforms: uniforms,
             side: THREE.DoubleSide,
 
-            fragmentShader: fs,
-            vertexShader: vs,
+            fragmentShader: fragmentShader,
+            vertexShader: vertexShader,
         }
     );
     this.mesh = new THREE.Mesh(this.geometry, this.material);
