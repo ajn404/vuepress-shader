@@ -28,6 +28,10 @@ const practice : NavbarGroup [] = [
                     {
                         text:'varyings混合颜色(渐变色)',
                         link:`${practiceBaseUrl}blendingColorVaryings`
+                    },
+                    {
+                        text:'new',
+                        link:`${practiceBaseUrl}shapingFunction`
                     }
                 ]
             }

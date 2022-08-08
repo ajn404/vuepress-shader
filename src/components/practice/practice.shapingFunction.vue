@@ -1,14 +1,28 @@
 <template>
-    <div class="practice_changeColor fullscreen" ref="container">
+    <div class="practice_blendingColor fullscreen" ref="container">
     </div>
 </template>
 
 <script lang="ts" setup>
 import Sketch from "@scripts/practice.setup.ts";
 import * as THREE from "three";
-import { ref, nextTick ,onUnmounted } from "vue";
-import fs from '@shaders/practice/changeColor.time/fragment.glsl'
-import vs from '@shaders/practice/changeColor.time/vertex.glsl'
+import { ref, nextTick ,onUnmounted ,defineProps } from "vue";
+import fs from '@shaders/practice/shapingFunction/fragment.glsl'
+import vs from '@shaders/practice/shapingFunction/vertex.glsl'
+
+
+// import varingsFs from '@shaders/practice/blendingColor/varyingFs.glsl';
+// import varingsVs from '@shaders/practice/blendingColor/varyingVs.glsl';
+
+// const props = defineProps({
+//   type:String
+// });
+
+let fragmentShader : string = fs,vertexShader:string  = vs;
+// if(props.type){
+//     fragmentShader = varingsFs;
+//     vertexShader = varingsVs;
+// }
 
 const container = ref(null);
 
@@ -42,8 +56,8 @@ sketch.addObject = function () {
             uniforms: uniforms,
             side: THREE.DoubleSide,
 
-            fragmentShader: fs,
-            vertexShader: vs,
+            fragmentShader: fragmentShader,
+            vertexShader: vertexShader,
         }
     );
     this.mesh = new THREE.Mesh(this.geometry, this.material);
@@ -52,7 +66,6 @@ sketch.addObject = function () {
 sketch.animate = function () {
     this.render();
     uniforms.u_time.value = clock.getElapsedTime();
-    
     if(this.container.getBoundingClientRect().width>0)
     requestAnimationFrame(this.animate.bind(this));
     else return;
@@ -78,6 +91,7 @@ sketch.resize = function () {
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(this.width, this.height);
     this.render();
+
 
 }
 
