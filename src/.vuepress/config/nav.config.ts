@@ -30,7 +30,7 @@ const practice : NavbarGroup [] = [
                         link:`${practiceBaseUrl}blendingColorVaryings`
                     },
                     {
-                        text:'new',
+                        text:'旋转和缩放',
                         link:`${practiceBaseUrl}shapingFunction`
                     }
                 ]
