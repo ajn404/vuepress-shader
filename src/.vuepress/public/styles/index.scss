@@ -1,5 +1,6 @@
 ::-webkit-scrollbar{
     width:1em;
+    width: 0;
   }
   
   ::-webkit-scrollbar-track{
@@ -12,8 +13,11 @@
 
   .fullscreen{
     height: calc( 100vh - var(--navbar-height) );
+    // height: auto;
     overflow: hidden;
     width: 100%;
+    position: absolute;
+    top:  var(--navbar-height);
   }
 
   *{
