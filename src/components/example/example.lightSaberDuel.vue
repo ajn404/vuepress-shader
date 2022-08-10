@@ -72,10 +72,10 @@ sketch.resize = function () {
 
     uniforms.u_frame.value = 0;
 
-    this.camera.aspect = this.width / this.height;
-    this.camera.updateProjectionMatrix();
-    this.renderer.setSize(this.width, this.height);
-    this.render();
+    this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
+        this.camera.updateProjectionMatrix();
+        this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+        this.render();
 
 }
 

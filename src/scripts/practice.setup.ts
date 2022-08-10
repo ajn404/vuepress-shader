@@ -63,9 +63,9 @@ export default class Sketch {
     }
 
     resize() {
-        this.camera.aspect = this.width / this.height;
+        this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
         this.camera.updateProjectionMatrix();
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
         this.render();
     }
 
