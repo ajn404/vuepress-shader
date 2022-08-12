@@ -39,18 +39,28 @@ const practice : NavbarGroup [] = [
     }
 ]
 
+const exampleBaseUrl : string= '/markdown/example/'
 const examples : NavbarGroup [] = [
     {
         text:'示例',
         children:[
-
+            {
+                text:'搬运',
+                children:[
+                    {
+                        text:'光剑',
+                        link:`${exampleBaseUrl}lightSaberDuel`
+                    }
+                ]
+            }
         ]
     }
 ]
 
 const navbar : NavbarConfig = 
 [
-    ...practice
+    ...practice,
+    ...examples
 ]
 
 export default navbar

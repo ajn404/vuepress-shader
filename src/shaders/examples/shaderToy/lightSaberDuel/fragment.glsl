@@ -1,3 +1,4 @@
+#version 330 core
 
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
@@ -1353,7 +1354,7 @@ float sun=pow(max(0.,dot(rayDirection,normalize(sunLightPos))),2.);
 //sky and stars
 vec2 xzDir=normalize(rayDirection.xz);
 vec2 starsUv=vec2(atan(xzDir.x,xzDir.y),rayDirection.y);
-vec3 stars=texture2D(iChannel0,starsUv*.1,0.).xyz;
+vec3 stars=texture2D(iChannel0,starsUv*0.1,0.).xyz;
 stars*=pow(dot(stars,stars)*.5,16.)*.3;// smoothstep(2.1, 2.5, dot(stars, stars));
 stars=smoothstep(vec3(0.),vec3(1.),stars);
 float skyHeight=pow(max(0.,rayDirection.y)*2.,.75);
