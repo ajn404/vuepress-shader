@@ -18,6 +18,4 @@ nextTick(() => {
 onUnmounted(()=>{
     sketch.beforeDestroy();
 })
-
-
 </script>

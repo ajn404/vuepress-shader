@@ -52,7 +52,6 @@ sketch.addObject = function () {
 sketch.animate = function () {
     this.render();
     uniforms.u_time.value = clock.getElapsedTime();
-    
     if(this.container.getBoundingClientRect().width>0)
     requestAnimationFrame(this.animate.bind(this));
     else return;
@@ -78,7 +77,6 @@ sketch.resize = function () {
         this.camera.updateProjectionMatrix();
         this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
         this.render();
-
 }
 
 nextTick(() => {
@@ -91,9 +89,5 @@ nextTick(() => {
 onUnmounted(()=>{
     sketch.beforeDestroy();
 })
-
-
-
-
 
 </script>

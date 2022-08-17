@@ -48,7 +48,7 @@ const examples : NavbarGroup [] = [
                 text:'搬运',
                 children:[
                     {
-                        text:'光剑',
+                        text:'光剑(被注注释了)=>窗边的坤坤',
                         link:`${exampleBaseUrl}lightSaberDuel`
                     }
                 ]
@@ -57,10 +57,24 @@ const examples : NavbarGroup [] = [
     }
 ]
 
+const noteBaseUrl : string = '/markdown/notes/'
+const note : NavbarGroup [] = [
+    {
+        text:'glsl语言注解',
+        children:[
+            {
+                text:'基础注解',
+                link:`${noteBaseUrl}basic`
+            }
+        ]
+    }
+]
+
 const navbar : NavbarConfig = 
 [
     ...practice,
-    ...examples
+    ...examples,
+    ...note
 ]
 
 export default navbar

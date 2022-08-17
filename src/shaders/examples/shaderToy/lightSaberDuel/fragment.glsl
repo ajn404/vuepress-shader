@@ -1395,7 +1395,7 @@ void main(){
   vec4 col=vec4(tile, 1.0);
 
   //if(....)
-  bug=1.0;
+  bug=0.5;
 
   col.x+=bug;
 

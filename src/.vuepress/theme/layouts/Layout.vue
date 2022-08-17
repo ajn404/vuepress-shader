@@ -10,19 +10,4 @@ import ParentLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue"
         <template #page-top></template>
     </ParentLayout>
 </transition>
-   
 </template>
-
-<style lang="scss" scoped>
-:deep(.page .theme-default-content){
-    max-width: inherit;
-    padding: 0;
-    margin: 0;
-}
-:deep(.page-meta){
-    display: none;
-}
-:deep(.page){
-    padding: 0;
-}
-</style>

@@ -1,27 +1,34 @@
-::-webkit-scrollbar{
-    width:1em;
-    width: 0;
-  }
-  
-  ::-webkit-scrollbar-track{
-    background: #dddddd;
-  }
-  
-  ::-webkit-scrollbar-thumb{
-    background: var(--c-brand);
-  }
+::-webkit-scrollbar {
+  width: 1em;
+  width: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: #dddddd;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--c-brand);
+}
+
+.page .theme-default-content {
+  // max-width: 100vw;
+  padding: 0;
 
   .fullscreen{
     height: calc( 100vh - var(--navbar-height) );
     // height: auto;
     overflow: hidden;
-    width: 100%;
+    width: 100vw;
     position: absolute;
-    top:  var(--navbar-height);
+    top:  var(--navbar-height) ;
+    left: 0;
+
   }
 
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  
+}
+
+.page-meta{
+  display: none;
+}
