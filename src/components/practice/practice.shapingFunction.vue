@@ -14,9 +14,9 @@ import vs from '@shaders/practice/shapingFunction/vertex.glsl'
 // import varingsFs from '@shaders/practice/blendingColor/varyingFs.glsl';
 // import varingsVs from '@shaders/practice/blendingColor/varyingVs.glsl';
 
-// const props = defineProps({
-//   type:String
-// });
+const props = defineProps({
+  type:String
+});
 
 let fragmentShader : string = fs,vertexShader:string  = vs;
 // if(props.type){
