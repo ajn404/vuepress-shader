@@ -73,11 +73,49 @@ const note : NavbarGroup [] = [
     }
 ]
 
+const beforeBlog:NavbarGroup [] = [
+    {
+        text:'之前的博客',
+        children:[
+            {
+                text:'vuepress',
+                children:[
+                        
+
+                    {
+                        text:'rengm(p5,threejs,echarts等)',
+                        link:'https://ajn404.github.io/rengm/'
+                    },
+                    {
+                        text:'国内版rengm',
+                        link:'https://ajn404.gitee.io/rengm/'
+                    },
+                    {
+                        text:'ngm',
+                        link:'https://ajn404.github.io/ngm.github.io/'
+                    },
+                    {
+                        text:'国内版ngm(笔记)',
+                        link:'http://ajn404.gitee.io/ngm.github.io/'
+                    },
+
+                    
+                ]
+            },
+            {
+                text:'早期hexo',
+                link:'https://ajn404.github.io/log.github.io/'
+            }
+        ]
+    }
+]
+
 const navbar : NavbarConfig = 
 [
     ...practice,
     ...examples,
-    ...note
+    ...note,
+    ...beforeBlog
 ]
 
 export default navbar
