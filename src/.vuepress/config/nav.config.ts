@@ -60,11 +60,14 @@ const examples : NavbarGroup [] = [
 const noteBaseUrl : string = '/markdown/notes/'
 const note : NavbarGroup [] = [
     {
-        text:'glsl语言注解',
+        text:'笔记',
         children:[
             {
-                text:'基础注解',
+                text:'glsl基础注解',
                 link:`${noteBaseUrl}basic`
+            },{
+                text:'js基础（ecma）',
+                link:`${noteBaseUrl}js`
             }
         ]
     }
