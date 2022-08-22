@@ -400,6 +400,15 @@ console.log('foobar'.search(new caseInsensitiveSearch('BaR')));
 
 ~ 非 & 与 ^异或 ｜ 或 << 左移 >>右移 >>> 无符号右移
 
+ECMAScript has two built-in types : Number and BigInt.
+The following abstract operations are defined over these numeric types.
+The "Result" column shows the return type, along with an indication if it is possible for some invocations of the operation to return an abrupt completion.
+
+|  Operation |  Example source | Invoked by the Evaluation semantics of ... | Result |
+|  --- | --- | --- | ---|
+| 1 | -x | Unary - Operator | Number |
+
 ##### 6.1.6.1 the number type
+
 
 [MDN Number](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number)

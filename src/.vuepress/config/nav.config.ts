@@ -1,37 +1,37 @@
-import {NavbarConfig,NavbarGroup} from 'vuepress';
+import { NavbarConfig, NavbarGroup } from 'vuepress';
 
 
-const practiceBaseUrl : string= '/markdown/practice/'
-const practice : NavbarGroup [] = [
+const practiceBaseUrl: string = '/markdown/practice/'
+const practice: NavbarGroup[] = [
     {
-        text:'练习',
-        children:[
+        text: '练习',
+        children: [
             {
-                text:'刚开始',
-                children:[
+                text: '刚开始',
+                children: [
                     {
-                        text:'第一个Shader练习',
-                        link:`${practiceBaseUrl}firstShader`
+                        text: '第一个Shader练习',
+                        link: `${practiceBaseUrl}firstShader`
                     },
                     {
-                        text:'鼠标绘制平面颜色',
-                        link:`${practiceBaseUrl}changeColor_mouse`
+                        text: '鼠标绘制平面颜色',
+                        link: `${practiceBaseUrl}changeColor_mouse`
                     },
                     {
-                        text:'时间绘制平面颜色',
-                        link:`${practiceBaseUrl}changeColor_time`
+                        text: '时间绘制平面颜色',
+                        link: `${practiceBaseUrl}changeColor_time`
                     },
                     {
-                        text:'uniforms混合颜色(渐变色)',
-                        link:`${practiceBaseUrl}blendingColorUniforms`
+                        text: 'uniforms混合颜色(渐变色)',
+                        link: `${practiceBaseUrl}blendingColorUniforms`
                     },
                     {
-                        text:'varyings混合颜色(渐变色)',
-                        link:`${practiceBaseUrl}blendingColorVaryings`
+                        text: 'varyings混合颜色(渐变色)',
+                        link: `${practiceBaseUrl}blendingColorVaryings`
                     },
                     {
-                        text:'旋转和缩放',
-                        link:`${practiceBaseUrl}shapingFunction`
+                        text: '旋转和缩放',
+                        link: `${practiceBaseUrl}shapingFunction`
                     }
                 ]
             }
@@ -39,17 +39,17 @@ const practice : NavbarGroup [] = [
     }
 ]
 
-const exampleBaseUrl : string= '/markdown/example/'
-const examples : NavbarGroup [] = [
+const exampleBaseUrl: string = '/markdown/example/'
+const examples: NavbarGroup[] = [
     {
-        text:'示例',
-        children:[
+        text: '示例',
+        children: [
             {
-                text:'搬运',
-                children:[
+                text: '搬运',
+                children: [
                     {
-                        text:'光剑(被注注释了)=>窗边的坤坤',
-                        link:`${exampleBaseUrl}lightSaberDuel`
+                        text: '光剑(被注释了)=>窗边的坤坤',
+                        link: `${exampleBaseUrl}lightSaberDuel`
                     }
                 ]
             }
@@ -57,66 +57,67 @@ const examples : NavbarGroup [] = [
     }
 ]
 
-const noteBaseUrl : string = '/markdown/notes/'
-const note : NavbarGroup [] = [
+const noteBaseUrl: string = '/markdown/notes/'
+const note: NavbarGroup[] = [
     {
-        text:'笔记',
-        children:[
+        text: '笔记',
+        children: [
             {
-                text:'glsl基础注解',
-                link:`${noteBaseUrl}basic`
-            },{
-                text:'js基础（ecma）',
-                link:`${noteBaseUrl}js`
+                text: 'glsl基础注解',
+                link: `${noteBaseUrl}basic`
+            }, {
+                text: 'js基础（ecma）',
+                link: `${noteBaseUrl}js`
             }
         ]
     }
 ]
 
-const beforeBlog:NavbarGroup [] = [
+const beforeBlog: NavbarGroup[] = [
     {
-        text:'之前的博客',
-        children:[
+        text: '之前的博客',
+        children: [
             {
-                text:'vuepress',
-                children:[
-                        
-
+                text: 'vuepress',
+                children: [
                     {
-                        text:'rengm(p5,threejs,echarts等)',
-                        link:'https://ajn404.github.io/rengm/'
+                        text: 'rengm(p5,threejs,echarts等)',
+                        link: 'https://ajn404.github.io/rengm/'
                     },
                     {
-                        text:'国内版rengm',
-                        link:'https://ajn404.gitee.io/rengm/'
+                        text: '国内版rengm',
+                        link: 'https://ajn404.gitee.io/rengm/'
                     },
                     {
-                        text:'ngm',
-                        link:'https://ajn404.github.io/ngm.github.io/'
+                        text: 'ngm(前端笔记)',
+                        link: 'https://ajn404.github.io/ngm.github.io/'
                     },
                     {
-                        text:'国内版ngm(笔记)',
-                        link:'http://ajn404.gitee.io/ngm.github.io/'
+                        text: '国内版ngm',
+                        link: 'http://ajn404.gitee.io/ngm.github.io/'
                     },
-
-                    
                 ]
             },
             {
-                text:'早期hexo',
-                link:'https://ajn404.github.io/log.github.io/'
+                text: 'hexo',
+                children: [
+                    {
+                        text: 'md博客(学生时代)',
+                        link: 'https://ajn404.github.io/log.github.io/'
+                    }
+                ]
             }
         ]
     }
 ]
 
-const navbar : NavbarConfig = 
-[
-    ...practice,
-    ...examples,
-    ...note,
-    ...beforeBlog
-]
+const navbar: NavbarConfig =
+    [
+        ...practice,
+        ...examples,
+        ...note,
+        ...beforeBlog
+    ]
 
 export default navbar
 
