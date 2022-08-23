@@ -1,5 +1,5 @@
 <template>
-    <div class="practice_comprehensive fullscreen" ref="container">
+    <div class="practice fullscreen" ref="container">
     </div>
 </template>
 
@@ -78,7 +78,7 @@ nextTick(() => {
         container: container.value || document.body
     };
 
-    loader.load('/images/logo.jpg', (texture: any) => {
+    loader.load('/vuepress-shader/images/logo.jpg', (texture: any) => {
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
         texture.minFilter = THREE.LinearFilter;

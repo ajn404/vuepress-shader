@@ -1,3 +1,5 @@
+
+
 <template>
     <div class="example_lightSaberDuel fullscreen" ref="container">
     </div>
@@ -76,6 +78,7 @@ sketch.resize = function () {
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
     this.render();
+
 }
 
 sketch.addObject = function () {

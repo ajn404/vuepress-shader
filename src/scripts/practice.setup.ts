@@ -46,10 +46,10 @@ export default class Sketch {
         this.addObject();
         this.animate();
     }
-/**
- * 
- * @returns void
- */
+    /**
+     * 
+     * @returns void
+     */
     animate() {
         //   this.time += 0.05;
         this.mesh.rotation.x += this.time / 1000;
