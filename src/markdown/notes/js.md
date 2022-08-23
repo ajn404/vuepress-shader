@@ -413,8 +413,30 @@ The "Result" column shows the return type, along with an indication if it is pos
 | Number::exponentiate(指数化) | x**y | Exponentiation Operator and Math.pow(base,exponent) | Number |
 | BigInt::exponentiate |  x**y | Exponentiation Operator and Math.pow(base,exponent) | Number |
 | Number::multiply | x*y | Multiplicative Operators | Number |
-| Number::multiply | x*y | Multiplicative(乘法的) Operators | Number |
+| BigInt::multiply | x*y | Multiplicative(乘法的) Operators | BigInt |
 | Number::divide | x/y | Multiplicative Operators | Number |
+| BigInt::divide | x/y | Multiplicative Operators | either a normal completion containing a BigInt or an abrupt completion  |
+| Number::remainder | x%y | Multiplicative Operators | Number|
+|BigInt::remainder(余数) | x%y | Multiplicative Operators | either a normal completion containing a BigInt or an abrupt completion|
+|Number::add | x++<br/>++x<br/>x+y | Postfix Increment Operator(后缀增量运算),Prefix Increment Operator, and The Addition Operator(-) | Number | Number |
+| BigInt::add | x++<br/>++x<br/>x+y | Postfix Increment Operator(后缀增量运算),Prefix Increment Operator, and The Addition Operator(-) | Number | BigInt |
+|Number::subtract | x--<br/>--x<br/>x-y | Postfix Decrement Operator(后缀增量运算),Prefix Decrement Operator, and The Addition Operator(-) | Number | Number |
+| BigInt::subtract | x--<br/>--x<br/>x-y | Postfix Decrement Operator(后缀增量运算),Prefix Decrement Operator, and The Addition Operator(-) | Number | BigInt |
+
+
+```js
+14n/12n===1n//true
+let x = 1;
+x++;//1
+x;//2
+++x;//3
+x;//3
+//BigInt
+let y = 1n;
+y++;//1n
+y;//2n
+
+```
 
 
 ##### 6.1.6.1 the number type
