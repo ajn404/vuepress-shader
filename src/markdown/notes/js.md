@@ -406,7 +406,16 @@ The "Result" column shows the return type, along with an indication if it is pos
 
 |  Operation |  Example source | Invoked by the Evaluation semantics of ... | Result |
 |  --- | --- | --- | ---|
-| 1 | -x | Unary - Operator | Number |
+| Number::unaryMinus(单数减法) | -x | Unary - Operator | Number |
+| BigInt::unaryMinus | -x | Unary - Operator | BigInt |
+｜ Number::bitwiseNOT(位运算非) | ~x | Bitwise NOT Operator (~) | Number |
+| BigInt::bitwiseNOT | ~x | Bitwise NOT Operator(~) | BigInt |
+| Number::exponentiate(指数化) | x**y | Exponentiation Operator and Math.pow(base,exponent) | Number |
+| BigInt::exponentiate |  x**y | Exponentiation Operator and Math.pow(base,exponent) | Number |
+| Number::multiply | x*y | Multiplicative Operators | Number |
+| Number::multiply | x*y | Multiplicative(乘法的) Operators | Number |
+| Number::divide | x/y | Multiplicative Operators | Number |
+
 
 ##### 6.1.6.1 the number type
 

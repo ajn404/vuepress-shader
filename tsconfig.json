@@ -31,7 +31,6 @@
     ],
     "include": [
         "./src/.vuepress/**/*.ts",
-        "**/*",
         "./src/.vuepress/**/*.mts",
         "./src/.vuepress/**/*.d.ts",
         "./src/.vuepress/**/*.tsx",
