@@ -1,5 +1,5 @@
 <template>
-    <div class="practice_changeColor fullscreen" ref="container">
+    <div class="example_lightSaberDuel fullscreen" ref="container">
     </div>
 </template>
 
@@ -73,10 +73,24 @@ sketch.resize = function () {
     uniforms.u_frame.value = 0;
 
     this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
-        this.camera.updateProjectionMatrix();
-        this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
-        this.render();
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+    this.render();
+}
 
+sketch.addObject = function () {
+    this.geometry = new THREE.PlaneGeometry(2, 2);
+    this.material = new THREE.ShaderMaterial(
+        {
+            uniforms: uniforms,
+            side: THREE.DoubleSide,
+
+            fragmentShader: fs,
+            vertexShader: vs,
+        }
+    );
+    this.mesh = new THREE.Mesh(this.geometry, this.material);
+    this.scene.add(this.mesh);
 }
 
 nextTick(() => {
@@ -84,7 +98,7 @@ nextTick(() => {
         container: container.value || document.body
     };
 
-    loader.load('/images/logo.jpg', (texture: any) => {
+    loader.load('/vuepress-shader/images/logo.jpg', (texture: any) => {
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
         texture.minFilter = THREE.LinearFilter;
@@ -92,25 +106,11 @@ nextTick(() => {
         uniforms.iChannel0.value = texture;
         uniforms.iChannel1.value = texture;
 
-        sketch.addObject = function () {
-            this.geometry = new THREE.PlaneGeometry(2, 2);
-            this.material = new THREE.ShaderMaterial(
-                {
-                    uniforms: uniforms,
-                    side: THREE.DoubleSide,
 
-                    fragmentShader: fs,
-                    vertexShader: vs,
-                }
-            );
-            this.mesh = new THREE.Mesh(this.geometry, this.material);
-            this.scene.add(this.mesh);
-        }
-        console.log(uniforms)
-        try{
-        sketch.init(options);
 
-        }catch(err){
+        try {
+            sketch.init(options);
+        } catch (err) {
             console.log(err)
         }
     })

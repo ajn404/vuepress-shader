@@ -25,7 +25,6 @@ if(props.type){
 }
 
 const container = ref(null);
-
 const uniforms = {
 
     u_time: { value: 0.0 },
@@ -45,7 +44,6 @@ const uniforms = {
         value: new THREE.Color(0x00fff0)
     }
 };
-
 const clock = new THREE.Clock();
 
 let sketch = new Sketch();
@@ -82,6 +80,7 @@ if ('ontouchstart' in window) {
 }
 
 sketch.resize = function () {
+    
     if (uniforms.u_resolution !== undefined) {
         uniforms.u_resolution.value.x = this.width;
         uniforms.u_resolution.value.y = this.height;
@@ -96,7 +95,7 @@ sketch.resize = function () {
 
 nextTick(() => {
     const options = {
-    container: container.value || document.body
+        container: container.value || document.body
     };
     sketch.init(options);
 })

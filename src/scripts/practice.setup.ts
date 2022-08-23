@@ -4,7 +4,6 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 interface optionsConfig {
     container: HTMLElement
 }
-
 export default class Sketch {
     time: number;
     geometry: any;
@@ -47,7 +46,10 @@ export default class Sketch {
         this.addObject();
         this.animate();
     }
-
+/**
+ * 
+ * @returns void
+ */
     animate() {
         //   this.time += 0.05;
         this.mesh.rotation.x += this.time / 1000;
@@ -91,6 +93,7 @@ export default class Sketch {
     }
 
     beforeDestroy() {
+
         const disposeChild = (mesh: any) => {
             if (mesh instanceof THREE.Mesh) {
                 if (mesh.geometry?.dispose) {

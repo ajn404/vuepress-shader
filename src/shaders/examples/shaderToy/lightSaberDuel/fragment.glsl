@@ -1387,17 +1387,12 @@ uniform int u_frame;
 // surfaceColor=pow(surfaceColor,vec4(1./2.2));
 // gl_FragColor=surfaceColor;
 // }
-
-
 void main(){
   float bug=0.0;
   vec3 tile=texture2D(iChannel0,gl_FragCoord.xy/u_resolution,0.).xyz;
   vec4 col=vec4(tile, 1.0);
-
   //if(....)
-  bug=0.5;
-
+  bug=0.01;
   col.x+=bug;
-
   gl_FragColor=col;
 }
