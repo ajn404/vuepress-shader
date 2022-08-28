@@ -422,6 +422,14 @@ The "Result" column shows the return type, along with an indication if it is pos
 | BigInt::add | x++<br/>++x<br/>x+y | Postfix Increment Operator(后缀增量运算),Prefix Increment Operator, and The Addition Operator(-) | Number | BigInt |
 |Number::subtract | x--<br/>--x<br/>x-y | Postfix Decrement Operator(后缀增量运算),Prefix Decrement Operator, and The Addition Operator(-) | Number | Number |
 | BigInt::subtract | x--<br/>--x<br/>x-y | Postfix Decrement Operator(后缀增量运算),Prefix Decrement Operator, and The Addition Operator(-) | Number | BigInt |
+| Number::leftShift | x<<y | The Left Shift Opertor (<<) | Number |
+| BigInt::leftShift | x<<y | The Left Shift Opertor (<<) | BigInt |
+| Number::signedRightShift(有符号右移) | x>>y | The Signed Right Shift Operator | Number |
+| BigInt::signedRightShift | x>>y | The Signed Right Shift Operator | BigInt |
+| Number::unsignedRightShift ｜ x>>>y | The Unsigned Right Shift Operator ｜ Number |
+| BigInt::unsignedRightShift | x>>>y | The Unsigned Right Shift Operator | a throw completion | 
+
+
 
 
 ```js
