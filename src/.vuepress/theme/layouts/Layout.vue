@@ -8,8 +8,8 @@ import ParentLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue"
         <template #navbar-after></template>
         <template #page-bottom></template>
         <template #page-top>
-                <!-- <span class="iconfont icon-yangshi_icon_tongyong_call">
-                </span> -->
+                <span class="iconfont icon-nav_drawer rotate">
+                </span>
         </template>
     </ParentLayout>
 </transition>

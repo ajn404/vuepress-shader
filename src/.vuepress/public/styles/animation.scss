@@ -1,0 +1,13 @@
+.rotate {
+    animation: heartDance 2s linear infinite;
+}
+
+@keyframes heartDance {
+    0% {
+        transform: rotate(0turn);
+    }
+
+    100% {
+        transform: rotate(1turn);
+    }
+}
