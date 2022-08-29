@@ -15,7 +15,8 @@ import {
     onBeforeUpdate,
     onUpdated,
     onBeforeUnmount,
-    onUnmounted
+    onUnmounted,
+Prop
 } from 'vue';
 const data = ref([{
     value: '1', hidden: false
@@ -32,12 +33,24 @@ const method = () => {
     console.log('i am fool');
 }
 
-//ts语法
+//ts语法定义props
 const props = defineProps<{
     title?: String,
     msg?: String,
 
 }>()
+
+
+interface Props {
+    title:String,
+    msg?:String
+}
+
+// 同上述声明
+// const props = defineProps<Props>()
+
+
+
 
 
 //整个生命周期

@@ -1,5 +1,5 @@
 ---
-
+title: ecma翻译/copy
 ---
 
 <style>
@@ -428,9 +428,22 @@ The "Result" column shows the return type, along with an indication if it is pos
 | BigInt::signedRightShift | x>>y | The Signed Right Shift Operator | BigInt |
 | Number::unsignedRightShift ｜ x>>>y | The Unsigned Right Shift Operator ｜ Number |
 | BigInt::unsignedRightShift | x>>>y | The Unsigned Right Shift Operator | a throw completion | 
-
-
-
+| Number::lessThan | x<y <br/> x>y <br/> x<=y <br/> x>=y | Relational Operators, via IsLessThan(x,y,LeftFirt) | Boolean or undefined (for unorderded inputs) |
+| BigInt::lessThan | x<y <br/> x>y <br/> x<=y <br/> x>=y | Relational Operators, via IsLessThan(x,y,LeftFirt) | Boolean |
+ | Number::equal | x==y <br/> x!= y <br/> x===y <br/> x!==y | Equality Operators,via isStrictlyEqual(x,y) | Boolean |
+| BigInt::equal |  x==y <br/> x!= y <br/> x===y <br/> x!==y | Equality Operators,via isStrictlyEqual(x,y) | Boolean |
+| Number::sameValue | Object.is(x,y) | Object internal methods , via SameValue(x,y),to test exact value equality | Booolean |
+| BigInt::sameValue | Object.is(x,y) | Object internal methods , via SameValue(x,y),to test exact value equality | Booolean |
+| Number::sameValueZero | [x].includes(y) | Array,Map , and Set methods,via SameValueZero(x,y), to test value equality,ignorning the difference between +0 and -0 | Boolean |
+| BigInt::sameValueZero | [x].includes(y) | Array,Map , and Set methods,via SameValueZero(x,y), to test value equality,ignorning the difference between +0 and -0 | Boolean |
+| Number::bitwiseAnd(按位与) ｜ x&y | Binary bitwise operators | Number|
+| BigInt::bitwiseAnd(按位与) ｜ x&y | Binary bitwise operators | BigInt|
+| Number::bitwiseXOR | x^y | Binary bitwise operators | Number|
+| BigInt::bitwiseXOR | x^y | Binary bitwise operators | BigInt|
+| Number::bitwiseOR | x|y | Binary bitwise operators | Number|
+| BigInt::bitwiseOR | x|y | Binary bitwise operators | BigInt|
+| Number::toString | String(x) | many expression and built-in functions,via ToString(argument) | String |
+| BigInt::toString | String(x) | many expression and built-in functions,via ToString(argument) | BigInt|
 
 ```js
 14n/12n===1n//true
@@ -444,6 +457,10 @@ let y = 1n;
 y++;//1n
 y;//2n
 
++0===-0;//true
+Object.is(+0,-0);//false
+Object.is(NaN,NaN);//true
+[+0].includes(-0);//true
 ```
 
 

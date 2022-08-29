@@ -100,7 +100,6 @@ nextTick(() => {
             this.mesh = new THREE.Mesh(this.geometry, this.material);
             this.scene.add(this.mesh);
         }
-        console.log(uniforms)
         try{
         sketch.init(options);
 
