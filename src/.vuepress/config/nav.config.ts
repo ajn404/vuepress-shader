@@ -68,6 +68,9 @@ const note: NavbarGroup[] = [
             }, {
                 text: 'js基础（ecma）',
                 link: `${noteBaseUrl}js`
+            },{
+                text: '命令行注释',
+                link: `${noteBaseUrl}shell`
             }
         ]
     }
