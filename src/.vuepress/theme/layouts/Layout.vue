@@ -9,3 +9,6 @@
         </ParentLayout>
     </transition>
 </template>
+<script setup lang="ts">
+import ParentLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue";
+</script>
