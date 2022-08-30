@@ -379,3 +379,7 @@ return Number::add(x,Number::unaryMinus(y))
 ```
 ![else](/images/js01.png)
 [MDN Number](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+### 6.1.7 The Object Type
+
+
