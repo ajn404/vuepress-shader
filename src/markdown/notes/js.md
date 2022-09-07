@@ -382,4 +382,15 @@ return Number::add(x,Number::unaryMinus(y))
 
 ### 6.1.7 The Object Type
 
+```js
+const string = 'string';
+const obj = {
+  init(){
+    console.log('init');
+  },
+  string
+}
+console.log(obj)
+```
+
 

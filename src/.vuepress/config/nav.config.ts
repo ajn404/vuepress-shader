@@ -15,11 +15,11 @@ const practice: NavbarGroup[] = [
                     },
                     {
                         text: '鼠标绘制平面颜色',
-                        link: `${practiceBaseUrl}changeColor_mouse`
+                        link: `${practiceBaseUrl}changeColorMouse`
                     },
                     {
                         text: '时间绘制平面颜色',
-                        link: `${practiceBaseUrl}changeColor_time`
+                        link: `${practiceBaseUrl}changeColorTime`
                     },
                     {
                         text: 'uniforms混合颜色(渐变色)',
@@ -32,6 +32,15 @@ const practice: NavbarGroup[] = [
                     {
                         text: '旋转和缩放',
                         link: `${practiceBaseUrl}shapingFunction`
+                    }
+                ]
+            },
+            {
+                text:'glsl functions',
+                children:[
+                    {
+                        text:'clamp',
+                        link:`${practiceBaseUrl}usingClamp`
                     }
                 ]
             }
