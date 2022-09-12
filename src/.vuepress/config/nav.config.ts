@@ -41,6 +41,10 @@ const practice: NavbarGroup[] = [
                     {
                         text:'clamp',
                         link:`${practiceBaseUrl}usingClamp`
+                    },
+                    {
+                        text:'step',
+                        link:`${practiceBaseUrl}usingStep`
                     }
                 ]
             }

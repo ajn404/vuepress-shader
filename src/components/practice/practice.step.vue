@@ -6,13 +6,13 @@
 <script lang="ts" setup>
 import Sketch from "@scripts/practice.setup.ts";
 import * as THREE from "three";
-import { ref, nextTick, onUnmounted } from "vue";
-import fs from '@shaders/practice/practiceCopy/fragment.glsl'
-import vs from '@shaders/practice/practiceCopy/vertex.glsl'
+import { ref, nextTick, onUnmounted,reactive } from "vue";
+import fs from '@shaders/practice/usingStepDrawCircle/fragment.glsl'
+import vs from '@shaders/practice/usingStepDrawCircle/vertex.glsl'
 
 const loader = new THREE.TextureLoader();
 const container = ref(null);
-const uniforms = {
+const uniforms = reactive({
 
     u_time: { value: 0.0 },
     u_mouse: {
@@ -36,7 +36,7 @@ const uniforms = {
     },
     iChannel0: { type: 't', value: '' },
     iChannel1: { type: 't', value: '' },
-};
+});
 
 const clock = new THREE.Clock();
 
@@ -75,18 +75,9 @@ sketch.resize = function () {
 
 nextTick(() => {
     const options = {
-        container: container.value || document.body
+    container: container.value || document.body
     };
-
-    loader.load('/vuepress-shader/images/logo.jpg', (texture: any) => {
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
-        texture.minFilter = THREE.LinearFilter;
-
-        uniforms.iChannel0.value = texture;
-        uniforms.iChannel1.value = texture;
-
-        sketch.addObject = function () {
+    sketch.addObject = function () {
             this.geometry = new THREE.PlaneGeometry(2, 2);
             this.material = new THREE.ShaderMaterial(
                 {
@@ -100,16 +91,10 @@ nextTick(() => {
             this.mesh = new THREE.Mesh(this.geometry, this.material);
             this.scene.add(this.mesh);
         }
-        try{
-        sketch.init(options);
-        sketch.camera.position.z = 0.52;
-        
-        }catch(err){
-            console.log(err)
-        }
-    })
-
+    sketch.init(options);
+    sketch.camera.position.z = 0.52;
 })
+
 
 onUnmounted(() => {
     sketch.beforeDestroy();
