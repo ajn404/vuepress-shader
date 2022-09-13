@@ -4,7 +4,7 @@ import { NavbarConfig, NavbarGroup } from 'vuepress';
 const practiceBaseUrl: string = '/markdown/practice/'
 const practice: NavbarGroup[] = [
     {
-        text: '练习',
+        text: 'practice',
         children: [
             {
                 text: '刚开始',
@@ -59,7 +59,7 @@ const practice: NavbarGroup[] = [
 const exampleBaseUrl: string = '/markdown/example/'
 const examples: NavbarGroup[] = [
     {
-        text: '示例',
+        text: 'example',
         children: [
             {
                 text: '搬运',
@@ -67,6 +67,10 @@ const examples: NavbarGroup[] = [
                     {
                         text: '光剑(被注释了)=>窗边的坤坤',
                         link: `${exampleBaseUrl}lightSaberDuel`
+                    },
+                    {
+                        text:'❄️❄️❄️❄️❄️',
+                        link:`${exampleBaseUrl}wavePrint`
                     }
                 ]
             }
@@ -77,7 +81,7 @@ const examples: NavbarGroup[] = [
 const noteBaseUrl: string = '/markdown/notes/'
 const note: NavbarGroup[] = [
     {
-        text: '笔记',
+        text: 'note',
         children: [
             {
                 text: 'glsl基础注解',
@@ -95,7 +99,7 @@ const note: NavbarGroup[] = [
 
 const beforeBlog: NavbarGroup[] = [
     {
-        text: '之前的博客',
+        text: 'gitpage history',
         children: [
             {
                 text: 'vuepress',
