@@ -7,8 +7,26 @@
 import Sketch from "@scripts/practice.setup.ts";
 import * as THREE from "three";
 import { ref, nextTick, onUnmounted,reactive } from "vue";
+
+// import shader
 import fs from '@shaders/practice/usingStepDrawCircle/fragment.glsl'
 import vs from '@shaders/practice/usingStepDrawCircle/vertex.glsl'
+import squareFs from '@shaders/practice/usingStepDrawSquare/fragment.glsl'
+import squareVs from '@shaders/practice/usingStepDrawSquare/vertex.glsl'
+
+const props = defineProps({
+  type:String
+});
+
+let fragmentShader : string = fs,vertexShader:string  = vs;
+if(props.type){
+    switch(props.type){
+        case 'Square':{
+            fragmentShader = squareFs;
+            vertexShader = squareVs;
+        } 
+    }  
+}
 
 const loader = new THREE.TextureLoader();
 const container = ref(null);
@@ -84,8 +102,8 @@ nextTick(() => {
                     uniforms: uniforms,
                     side: THREE.DoubleSide,
 
-                    fragmentShader: fs,
-                    vertexShader: vs,
+                    fragmentShader: fragmentShader,
+                    vertexShader: vertexShader,
                 }
             );
             this.mesh = new THREE.Mesh(this.geometry, this.material);
