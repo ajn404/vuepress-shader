@@ -1,0 +1,29 @@
+$duration:1s;
+$delay:1s;
+
+/*
+animation-name
+animation-duration
+animation-timing-function
+animation-delay
+animation-interation-count
+animation-direction
+animation-fill-mode
+animation-play-state
+animation-timeline
+*/
+
+.animate{
+    animation-duration: $duration;
+    animation-delay: $delay;
+    animation-fill-mode: both;
+}
+
+@keyframes demo {
+    from{
+        margin-left: -20%;
+    }
+    to{
+        margin-left: 100%;
+    }
+}
