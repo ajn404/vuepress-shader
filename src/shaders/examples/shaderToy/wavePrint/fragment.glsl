@@ -6,7 +6,7 @@ void main(){
     vec2 uv = gl_FragCoord.xy/u_resolution;
     vec3 col = 0.5 + 0.5*cos(u_time+uv.xyx+vec3(0,2,4));
     float cd = 40.0;
-    float lw = 600.0;
+    float lw = 500.0;
     float a = sin(u_time/20.0)*1.0;
     float r = ceil(uv.x*cd)+ceil(uv.y*cd);
     vec3 col2 = vec3( sin( ((uv.x*lw*sin(r*a))+(uv.y*lw*cos(r*a)))) );

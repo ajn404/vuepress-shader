@@ -12,6 +12,7 @@ const viteConfig = {
             '@components':resolve('../../components'),
             '@scripts':resolve('../../scripts'),
             '@shaders':resolve('../../shaders'),
+            '@styles':resolve('../../styles')
         }
     },
     css: {

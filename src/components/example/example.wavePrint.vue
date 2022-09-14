@@ -56,6 +56,8 @@ const uniforms = {
 const clock = new THREE.Clock();
 const sketch = new Sketch();
 sketch.animate = function () {
+    this.mesh.rotation.x += this.time / 1000;
+    this.mesh.rotation.y += this.time / 1000;
     this.render();
     uniforms.u_time.value = clock.getElapsedTime();
     uniforms.u_frame.value++;

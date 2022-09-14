@@ -52,6 +52,7 @@ interface for a Web-based application.<br/>
 ECMAScript execution environment.</div>
 :::
 <div class="tip-aqua">每个支持ECMA的web浏览器和服务器都提供其自身的宿主环境，完成ECMA执行环境</div>
+
 ### 4.2 hosts and implementations
 ::: tip 原文
 To aid integrating ECMAScript into host environments, this specification defers the definition of certain facilities (e.g.,
@@ -114,6 +115,7 @@ object is examined next; and so on.
 <p class="tip-aqua">
 对一个对象属性的引用，其实就是引用原型链中包含该属性的第一个对象中该对象属性的名称
 </p>
+
 #### 4.3.2 the strict variant of ECMAScript
 ::: tip 解释
 The strict variant of the language excludes some specific syntactic and semantic features of the regular ECMAScript language and modifies the detailed semantics of
@@ -173,6 +175,7 @@ composition合并 decomposition分解<br/>
 'n\u0303'.normalize('NFC') === {{'n\u0303'.normalize('NFC')}}<br/>
 'n\u0303'.normalize('NFD') === {{'n\u0303'.normalize('NFC')}}
 </p>
+
 ##### 6.1.4.1 StringIndexOf
 ::: tip 解释
 The abstract operation StringIndexOf takes arguments string (a String), searchValue (a String), and fromIndex (a nonnegative
@@ -272,6 +275,7 @@ async function * createAsyncIterable(asyncIterable){
 | name | description  | value and purpose |
 | --- | --- | --- |
 | @@hasInstance | Symbol.hasInstance| A method that determines if a constructor object recognizes an object as one of the constructor's instances.Called by the semantics of the instanceof operator. |
+
 ##### InstanceofOperator(V,target)
 The abstract Operation InstanceofOperator takes arguments V and target.It implements the generic algorithn for detemining if V is an instance of target either by consulting target's @@hasInstance method or,if absebt,determining whether the value of target's "prototype" property is present in V's prototype chain.
 - 如果Type 不是一个对象，报TyoeError exception
@@ -282,6 +286,7 @@ The abstract Operation InstanceofOperator takes arguments V and target.It implem
 | name | description  | value and purpose |
 | --- | --- | --- |
 | @@isConcatSpreadable | Symbol.isConcatSpreadable| 一个用于标识是否可以通过Array.prototype.concat进行扁平化处理的boolean值 ｜
+
 ##### Array.prototype.concat
 | name | description  | value and purpose |
 | --- | --- | --- |
@@ -300,6 +305,7 @@ class caseInsensitiveSearch {
 console.log('foobar'.search(new caseInsensitiveSearch('BaR')));
 // 期望输出为3
 ```
+
 #### 6.1.6 the Numeric type
 ~ 非 & 与 ^异或 ｜ 或 << 左移 >>右移 >>> 无符号右移
 ECMAScript has two built-in types : Number and BigInt.

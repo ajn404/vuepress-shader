@@ -27,4 +27,6 @@ void main(){
     vec3 col2 = vec3( sin( ((uv.x*lw*sin(r*a))+(uv.y*lw*cos(r*a)))) );
     gl_FragColor = vec4(ceil((0.3-col.rrr-col2)),1.0);
 }
+
+//ceil同js的Math.ceil
 ```
