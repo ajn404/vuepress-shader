@@ -71,6 +71,10 @@ const examples: NavbarGroup[] = [
                     {
                         text:'❄️❄️❄️❄️❄️',
                         link:`${exampleBaseUrl}wavePrint`
+                    },
+                    {
+                        text:'fractal city',
+                        link:`${exampleBaseUrl}fractalCity`
                     }
                 ]
             }

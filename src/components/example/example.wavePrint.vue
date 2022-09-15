@@ -13,18 +13,29 @@ import { ref, nextTick, onUnmounted } from "vue";
 import fs from '@shaders/examples/shaderToy/wavePrint/fragment.glsl'
 import vs from '@shaders/examples/shaderToy/wavePrint/vertex.glsl'
 
+import cityFs from '@shaders/examples/shaderToy/fractalCity/fragment.glsl'
+import cityVs from '@shaders/examples/shaderToy/fractalCity/vertex.glsl'
+
 const props = defineProps({
   type:String
 });
 
 let fragmentShader : string = fs,vertexShader:string  = vs;
+let doRotate  = true;
 if(props.type){
     switch(props.type){
         case 'Default':{
             fragmentShader = fs;
             vertexShader = vs;
             break;
-        } 
+        }
+        case 'fractalCity':{
+            fragmentShader = cityFs;
+            vertexShader = cityVs;
+            doRotate = false;
+            break;
+        }
+
     }  
 }
 const container = ref(null);
@@ -56,8 +67,10 @@ const uniforms = {
 const clock = new THREE.Clock();
 const sketch = new Sketch();
 sketch.animate = function () {
-    this.mesh.rotation.x += this.time / 1000;
-    this.mesh.rotation.y += this.time / 1000;
+    if(doRotate){
+        this.mesh.rotation.x += this.time / 1000;
+        this.mesh.rotation.y += this.time / 1000;
+    }
     this.render();
     uniforms.u_time.value = clock.getElapsedTime();
     uniforms.u_frame.value++;
@@ -113,6 +126,9 @@ nextTick(() => {
     };
 
     sketch.init(options);
+    sketch.camera.position.z = 0.77;
+
+
 
 })
 
