@@ -70,6 +70,7 @@ sketch.animate = function () {
     if(doRotate){
         this.mesh.rotation.x += this.time / 1000;
         this.mesh.rotation.y += this.time / 1000;
+        this.mesh.rotation.z += this.time / 1000;
     }
     this.render();
     uniforms.u_time.value = clock.getElapsedTime();
@@ -126,10 +127,8 @@ nextTick(() => {
     };
 
     sketch.init(options);
-    sketch.camera.position.z = 0.77;
-
-
-
+    sketch.camera.position.z = 0.7;
+    sketch.mesh.rotation.y = 0.5;
 })
 
 onUnmounted(() => {

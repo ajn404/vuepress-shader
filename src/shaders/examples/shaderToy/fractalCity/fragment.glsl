@@ -29,11 +29,12 @@ vec3 hash(uvec3 x)
 const float speed=.05;
 const float falloff=1.75;
 const float range=.5;
-const float count=11.;
+const float count=8.;
 
 // globals
 vec3 pp,ppp;
 float mat,glow;
+
 
 float map(vec3 p)
 {
@@ -94,11 +95,6 @@ float shadow(vec3 pos,vec3 at,float k){
     return f;
 }
 
-void maImage(out vec4 fragColor,in vec2 fragCoord){
-    fragColor=vec4(0,0,0,0);
-   
-   
-}
 void rect(out vec4 fragColor,in vec2 fragCoord){
 fragColor=vec4(0.,0.,0.,0.); 
    const float frames=3.;
@@ -163,12 +159,6 @@ fragColor=vec4(0.,0.,0.,0.);
     }
 }
 
-
-
 void main(){
-    // maImage(gl_FragColor,gl_FragCoord);
-    // gl_FragColor = vec4(1.,0.5 ,.6 ,1. );
     rect(gl_FragColor,vUv * u_resolution.xy);
-//   vec3 color = vec3(0.4157, 0.2941, 0.2941) * inRect;
-//   gl_FragColor=vec4(color,1.0);
 }

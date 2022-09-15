@@ -65,7 +65,7 @@ const examples: NavbarGroup[] = [
                 text: '搬运',
                 children: [
                     {
-                        text: '光剑(被注释了)=>窗边的坤坤',
+                        text: 'chicken behind window',
                         link: `${exampleBaseUrl}lightSaberDuel`
                     },
                     {
@@ -73,7 +73,7 @@ const examples: NavbarGroup[] = [
                         link:`${exampleBaseUrl}wavePrint`
                     },
                     {
-                        text:'fractal city',
+                        text:'fractal city(⚠️⚠️⚠️⚠️⚠️gpu)',
                         link:`${exampleBaseUrl}fractalCity`
                     }
                 ]
