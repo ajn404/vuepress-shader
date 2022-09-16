@@ -67,11 +67,11 @@ const uniforms = {
 const clock = new THREE.Clock();
 const sketch = new Sketch();
 sketch.animate = function () {
-    if(doRotate){
-        this.mesh.rotation.x += this.time / 1000;
-        this.mesh.rotation.y += this.time / 1000;
-        this.mesh.rotation.z += this.time / 1000;
-    }
+    // if(doRotate){
+    //     this.mesh.rotation.x += this.time / 1000;
+    //     this.mesh.rotation.y += this.time / 1000;
+    //     this.mesh.rotation.z += this.time / 1000;
+    // }
     this.render();
     uniforms.u_time.value = clock.getElapsedTime();
     uniforms.u_frame.value++;

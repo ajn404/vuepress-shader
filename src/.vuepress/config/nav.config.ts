@@ -69,11 +69,11 @@ const examples: NavbarGroup[] = [
                         link: `${exampleBaseUrl}lightSaberDuel`
                     },
                     {
-                        text:'❄️❄️❄️❄️❄️',
+                        text:'❄️❄️❄️❄️❄️ snow flake',
                         link:`${exampleBaseUrl}wavePrint`
                     },
                     {
-                        text:'fractal city(⚠️⚠️⚠️⚠️⚠️gpu)',
+                        text:'fractal city(⚠️ gpu)',
                         link:`${exampleBaseUrl}fractalCity`
                     }
                 ]

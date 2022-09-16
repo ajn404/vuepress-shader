@@ -1,5 +1,6 @@
 ---
 title: ecma翻译/copy
+sidebar: true
 ---
 <style>
 .tip-aqua{
@@ -398,5 +399,56 @@ const obj = {
 }
 console.log(obj)
 ```
+
+```js
+const obj = {
+  get a(){
+    return 2;
+  }
+}
+Object.defineProperty(
+  obj,
+  "b",
+  {
+    get:function(){
+      return Math.pow(this.a,this.a);
+    },
+    enumerable:true
+  }
+)
+console.log(obj.a,obj.b);
+//2 4
+```
+[Object.getOwnPropertyNames](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames)
+[Object.defineProperty](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+[Object.prototype.propertyIsEnumerable](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable)
+```js
+const obj = {};
+Object.defineProperty(
+  obj,
+  "a",
+  {
+    value:2,
+    enumerable:true
+  }
+)
+Object.defineProperty(
+  obj,
+  "b",
+  {
+    value:2,
+    enumerable:false
+  }
+)
+console.log(obj);
+console.log(Object.keys(obj));
+console.log(Object.getOwnPropertyNames(obj));
+obj.propertyIsEnumerable("a");//true
+obj.propertyIsEnumerable("b");//false
+
+```
+
+
+
 
 
