@@ -64,8 +64,8 @@ sketch.addObject = function () {
     this.scene.add(this.mesh);
 };
 sketch.animate = function () {
-    this.mesh.rotation.x += this.time / 1000;
-    this.mesh.rotation.y += this.time / 1000;
+    // this.mesh.rotation.x += this.time / 1000;
+    // this.mesh.rotation.y += this.time / 1000;
     this.render();
     uniforms.u_time.value = clock.getElapsedTime();
     if(this.container.getBoundingClientRect().width>0)
