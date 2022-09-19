@@ -448,7 +448,36 @@ obj.propertyIsEnumerable("b");//false
 
 ```
 
+#### Object.create(null)
 
+```js
+const x = Object.create(null);
+const y = {};
+Object.prototype.hasOwnProperty.call(x,"a");//false
+y.hasOwnProperty("a");//false
+```
 
+<div class="circle">
 
+</div>
+
+<style>
+  .circle{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background-color:#ababff;
+    background-image:url("/images/logo.jpg");
+    background-size:100%;
+    animation:2s linear 0s infinite alternate move;
+  }
+  @keyframes move{
+    0%{
+      margin-left:10%;
+    }
+    100%{
+      margin-left:calc(90% - 50px);
+    }
+  }
+</style>
 

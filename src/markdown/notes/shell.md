@@ -13,3 +13,46 @@ cal
 21 22 23 24 25 26 27  
 28 29 30 31     
 ```
+
+### ping 
+```shell 
+ping 112.80.248.75
+
+PING 112.80.248.75 (112.80.248.75): 56 data bytes
+64 bytes from 112.80.248.75: icmp_seq=0 ttl=54 time=16.360 ms
+64 bytes from 112.80.248.75: icmp_seq=1 ttl=54 time=15.340 ms
+64 bytes from 112.80.248.75: icmp_seq=2 ttl=54 time=22.679 ms
+64 bytes from 112.80.248.75: icmp_seq=3 ttl=54 time=12.669 ms
+64 bytes from 112.80.248.75: icmp_seq=4 ttl=54 time=12.539 ms
+64 bytes from 112.80.248.75: icmp_seq=5 ttl=54 time=19.038 ms
+64 bytes from 112.80.248.75: icmp_seq=6 ttl=54 time=15.320 ms
+64 bytes from 112.80.248.75: icmp_seq=7 ttl=54 time=19.247 ms
+64 bytes from 112.80.248.75: icmp_seq=8 ttl=54 time=20.838 ms
+^C
+--- 112.80.248.75 ping statistics ---
+9 packets transmitted, 9 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 12.539/17.114/22.679/3.345 ms
+```
+如果主机正在运行并连在网上，它就对回送信号进行响应。每个回传请求都包含一个因特网协议 (IP) 和 ICMP 头，后跟 timeval 结构以及足够用于填充包的字节。缺省情况是连续发送回送信号请求直到接收到中断信号 (Ctrl-C)。
+
+```shell
+ping 112.80.248.75 --apple-time
+
+PING 112.80.248.75 (112.80.248.75): 56 data bytes
+16:22:34.425612 64 bytes from 112.80.248.75: icmp_seq=0 ttl=54 time=22.271 ms
+16:22:35.429450 64 bytes from 112.80.248.75: icmp_seq=1 ttl=54 time=21.034 ms
+Request timeout for icmp_seq 2
+16:22:37.424474 64 bytes from 112.80.248.75: icmp_seq=3 ttl=54 time=12.005 ms
+16:22:38.434796 64 bytes from 112.80.248.75: icmp_seq=4 ttl=54 time=17.195 ms
+16:22:39.442434 64 bytes from 112.80.248.75: icmp_seq=5 ttl=54 time=19.668 ms
+16:22:40.448814 64 bytes from 112.80.248.75: icmp_seq=6 ttl=54 time=20.844 ms
+16:22:41.448862 64 bytes from 112.80.248.75: icmp_seq=7 ttl=54 time=15.566 ms
+16:22:42.456996 64 bytes from 112.80.248.75: icmp_seq=8 ttl=54 time=18.491 ms
+16:22:43.466351 64 bytes from 112.80.248.75: icmp_seq=9 ttl=54 time=22.927 ms
+16:22:44.466986 64 bytes from 112.80.248.75: icmp_seq=10 ttl=54 time=21.621 ms
+16:22:45.477471 64 bytes from 112.80.248.75: icmp_seq=11 ttl=54 time=26.769 ms
+^C
+--- 112.80.248.75 ping statistics ---
+12 packets transmitted, 11 packets received, 8.3% packet loss
+round-trip min/avg/max/stddev = 12.005/19.854/26.769/3.785 ms
+```
