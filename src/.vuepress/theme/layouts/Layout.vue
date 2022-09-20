@@ -5,12 +5,12 @@
             <template #navbar-before></template>
             <template #navbar-after>
                 <div class="tool-menu">
-                    <div class="iconfont icon-game">
+                    <div class="iconfont icon-game" @click="showMirror">
                         简易试炼场
-                        <codemirror class="code-mirror"></codemirror>
                     </div>
+                    <codemirror class="code-mirror" v-if="showCodeMirror"></codemirror>
                 </div>
-                
+            
             </template>
             <template #page-bottom></template>
             <template #page-top></template>
@@ -19,13 +19,17 @@
 </template>
 <script setup lang="ts">
 import ParentLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue";
+import {ref} from 'vue';
+const showCodeMirror = ref(false)
+const showMirror = ()=>{
+    showCodeMirror.value = ! showCodeMirror.value
+}
 </script>
 
 
 <style lang="scss" scoped>
     .tool-menu{
         position: fixed;
-        width: 200px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -35,9 +39,7 @@ import ParentLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue"
         right: 20px;
         top: 3.6rem;
         cursor:context-menu;
-        .code-mirror{
-            
-        }
+        
 
 
     }
