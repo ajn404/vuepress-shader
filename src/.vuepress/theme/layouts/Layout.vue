@@ -38,7 +38,9 @@ const showMirror = ()=>{
         background-color: transparent;
         right: 20px;
         top: 3.6rem;
-        cursor:context-menu;
+        .iconfont{
+            cursor:context-menu;
+        }
         
 
 

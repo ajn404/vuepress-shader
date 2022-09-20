@@ -8,7 +8,6 @@
     <div class="run">
       <button class="btn" @click="run">运行</button>
       <div class="result">
-        <div class="result-tag" v-if="codeRes">运行结果</div>
         <div class="run-result" v-if="codeRes" v-html="codeRes">
         </div>
 
@@ -129,9 +128,9 @@ export default defineComponent({
     margin: 10px 0 20px;
     cursor: pointer;
 
-    &:hover {
-      animation: hoverAni 1s linear infinite;
-    }
+    // &:hover {
+    //   animation: hoverAni 1s linear infinite;
+    // }
   }
 
   @keyframes hoverAni {
