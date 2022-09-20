@@ -1,8 +1,15 @@
 <template>
 
   <div class="codemirror-tool-box">
-    <codemirror v-model="code" placeholder="快写代码吧,帅哥..." :style="{ padding: '10px 0' ,margin:'20px 0 0'}"
-      :autofocus="true" :indent-with-tab="true" :tab-size="2" :extensions="extensions" @ready="handleReady"
+    <codemirror 
+    v-model="code" 
+      placeholder="快写代码吧,帅哥..." 
+      :style="{ padding: '10px 0' ,margin:'20px 0 0'}"
+      :autofocus="true" 
+      :indent-with-tab="true" 
+      :tab-size="2" 
+      :extensions="extensions" 
+      @ready="handleReady"
       @change="handelChange" />
 
     <div class="run">
@@ -127,7 +134,7 @@ export default defineComponent({
     height: 40px;
     margin: 10px 0 20px;
     cursor: pointer;
-
+    
     // &:hover {
     //   animation: hoverAni 1s linear infinite;
     // }
