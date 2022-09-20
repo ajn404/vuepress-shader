@@ -482,7 +482,3 @@ y.hasOwnProperty("a");//false
 </style>
 
 #### Object.getPrototypeOf()
-
-<ClientOnly>
-<codemirror></codemirror>
-</ClientOnly>

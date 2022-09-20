@@ -1,19 +1,20 @@
 <template>
-  <codemirror 
-    v-model="code" 
-    placeholder="快写代码吧,帅哥..." 
-    :style="{ padding: '10px 0' ,margin:'20px 0 0'}"
-    :autofocus="true" :indent-with-tab="true" :tab-size="2" :extensions="extensions" @ready="handleReady"
-    @change="handelChange" />
 
-  <div class="run">
-    <button class="btn" @click="run">运行</button>
-    <div class="result">
-      <div class="result-tag" v-if="codeRes">运行结果</div>
-      <div class="run-result" v-if="codeRes" v-html="codeRes">
+  <div class="codemirror-tool-box">
+    <codemirror v-model="code" placeholder="快写代码吧,帅哥..." :style="{ padding: '10px 0' ,margin:'20px 0 0'}"
+      :autofocus="true" :indent-with-tab="true" :tab-size="2" :extensions="extensions" @ready="handleReady"
+      @change="handelChange" />
+
+    <div class="run">
+      <button class="btn" @click="run">运行</button>
+      <div class="result">
+        <div class="result-tag" v-if="codeRes">运行结果</div>
+        <div class="run-result" v-if="codeRes" v-html="codeRes">
+        </div>
+
       </div>
-
     </div>
+
   </div>
 
 
@@ -37,7 +38,7 @@ export default defineComponent({
   setup(props) {
     const extensions = [javascript(), oneDark]
     //input
-    const code = ref(props.codes||"")
+    const code = ref(props.codes || "")
 
     // Codemirror EditorView instance ref
     const view = shallowRef()
@@ -78,13 +79,13 @@ export default defineComponent({
     const run = () => {
       codeRes.value = "";
       try {
-        if(!res.value){
-          codeRes.value = "不要偷懒哦,帅哥"
+        if (!res.value) {
+          codeRes.value = "不要偷懒哦,帅哥! "
           return;
         }
         //codeRes.value = eval(res.value)
         //eval=>new Function
-        res.value =   `console.reWriteLog("运行成功啦");${res.value.replaceAll('console\.log', 'console\.reWriteLog')}` ;
+        res.value = `console.reWriteLog("运行成功啦! ");${res.value.replaceAll('console\.log', 'console\.reWriteLog')}`;
         const func = new Function(res.value);
         func();
       }
@@ -114,18 +115,37 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .run {
-  
+
   .btn {
     border: none;
     padding: 5px;
-    width: 50px;
-    height: 40px;
-    margin: 10px;
+    margin: 10px 0 20px;
     color: #2a2a99;
     background-color: #aeddff;
-    font-size: 1.1em;
     font-weight: bold;
     border-radius: 20%;
+    width: 50px;
+    height: 40px;
+    margin: 10px 0 20px;
+    cursor: pointer;
+
+    &:hover {
+      animation: hoverAni 1s linear infinite;
+    }
+  }
+
+  @keyframes hoverAni {
+    0% {
+      font-size: 1.0em;
+    }
+
+    100% {
+      font-size: 1.2em;
+      width: 60px;
+      height: 50px;
+      margin: 10px 0;
+      box-shadow: 10px 5px 5px #2a2a99;
+    }
   }
 
   .result {
@@ -135,6 +155,7 @@ export default defineComponent({
 
     .result-tag {
       color: black;
+
     }
 
     .run-result {
