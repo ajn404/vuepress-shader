@@ -3,7 +3,7 @@
   <div class="codemirror-tool-box">
     <codemirror 
     v-model="code" 
-      placeholder="快写代码吧,帅哥..." 
+      placeholder="在这里写代码" 
       :style="{ padding: '10px 0' ,margin:'20px 0 0'}"
       :autofocus="true" 
       :indent-with-tab="true" 
@@ -92,6 +92,7 @@ export default defineComponent({
         //eval=>new Function
         const template = res.value.replaceAll('console\.log', 'console\.reWriteLog');
         res.value = `console.reWriteLog("运行成功啦! ");${template}`;
+        
         const func = new Function(res.value);
         func();
       }
