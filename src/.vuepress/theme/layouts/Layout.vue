@@ -1,75 +1,113 @@
 
 <template>
     <transition name="fade" mode="out-in" appear>
-        <ParentLayout class="parent-layout">
+        <ParentLayout class="parent-layout" @click="closeAll">
             <template #navbar-before></template>
             <template #navbar-after>
-                <div class="tool-menu">
-                    <div class="iconfont icon-nav_drawer">
+                <div class="navbar-after">
+                    <div :class="menuClass">
+                        <div class="iconfont icon-nav_drawer" @click="slideDown"></div>
+                        <div class="iconfont icon-game" @click.stop="showMirror"></div>
                     </div>
-
-                    <div class="iconfont icon-game" @click="showMirror">
-                        简易试炼场
-                    </div>
-                    <codemirror class="code-mirror" v-if="showCodeMirror"></codemirror>
                 </div>
-
             </template>
             <template #page-bottom></template>
             <template #page-top></template>
         </ParentLayout>
     </transition>
+    <codemirror class="code-mirror" v-show="showCodeMirror"></codemirror>
 </template>
 <script setup lang="ts">
 import ParentLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue";
 import { ref } from 'vue';
-const showCodeMirror = ref(false)
+const showCodeMirror = ref(false);
+const menuClass = ref(["tool-menu"]);
+
+const slideDown = () => {
+    if (!menuClass.value.includes("active")) {
+        menuClass.value.push("active")
+    }
+    else {
+        menuClass.value = menuClass.value.filter((item, index) => {
+            return item !== "active"
+        })
+    }
+}
+
+const closeAll = ()=>{
+    showCodeMirror.value = false;
+}
+
 const showMirror = () => {
-    showCodeMirror.value = !showCodeMirror.value
+    showCodeMirror.value = !showCodeMirror.value;
+    if(showCodeMirror.value){
+
+    }
 }
 </script>
 
 
 <style lang="scss" scoped>
+    .code-mirror {
+        min-width: 90vw;
+        width: 90vw;
+        position: fixed;
+        top: 30vh;
+        background-color: azure;
+        padding: 20px;
+        z-index: 19;
+        &:hover{
+            outline: 1px dotted salmon;
+        }
+        border-radius: 1rem;
+        left: 5vw;
+    }
+.navbar-after {
+    position: relative;
+
+    
+}
+
 .tool-menu {
     max-width: 30vw;
-    width: 30vw;
     position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
     background-color: transparent;
-    right: 20px;
+    right:2.5rem;
     top: 3.6rem;
     z-index: -1;
+    overflow: hidden;
 
-
-    &:hover {
+    &.active {
         .iconfont {
-            display: block;
+            height: 2em;
         }
     }
 
     .iconfont {
+        height: 0;
+        transition: height .4s;
         line-height: 1.5;
-        display: none;
-
+        font-size: 2em;
+        color: rgba(0,0,0,.7);
     }
 
-    .icon-nav_drawer{
-        display: block;
+    .icon-nav_drawer {
+        height: 2em;
+    }
+
+    @media screen and (max-width: 900px) {
+        .icon-game {
+            display: none;
+        }
     }
 
     .icon-game {
         cursor: context-menu;
     }
 
-    .code-mirror {
-        min-width: 70vw;
-        position: absolute;
-        top: 0;
-        left: -65vw;
-    }
+
 }
 </style>

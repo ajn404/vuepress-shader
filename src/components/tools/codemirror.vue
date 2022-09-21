@@ -15,7 +15,7 @@
     <div class="run">
       <button class="btn" @click="run">运行</button>
       <div class="result">
-        <div class="run-result" v-if="codeRes" v-html="codeRes">
+        <div contenteditable="true" class="run-result" v-if="codeRes" v-html="codeRes">
         </div>
 
       </div>
@@ -45,7 +45,6 @@ export default defineComponent({
     const extensions = [javascript(), oneDark]
     //input
     const code = ref(props.codes || "")
-
     // Codemirror EditorView instance ref
     const view = shallowRef()
     const res = ref(code.value);
@@ -91,7 +90,8 @@ export default defineComponent({
         }
         //codeRes.value = eval(res.value)
         //eval=>new Function
-        res.value = `console.reWriteLog("运行成功啦! ");${res.value.replaceAll('console\.log', 'console\.reWriteLog')}`;
+        const template = res.value.replaceAll('console\.log', 'console\.reWriteLog');
+        res.value = `console.reWriteLog("运行成功啦! ");${template}`;
         const func = new Function(res.value);
         func();
       }
@@ -121,6 +121,9 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .run {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .btn {
     border: none;
@@ -134,27 +137,15 @@ export default defineComponent({
     height: 40px;
     margin: 10px 0 20px;
     cursor: pointer;
+    transition:all 1s;
     
-    // &:hover {
-    //   animation: hoverAni 1s linear infinite;
-    // }
-  }
-
-  @keyframes hoverAni {
-    0% {
-      font-size: 1.0em;
-    }
-
-    100% {
-      font-size: 1.2em;
-      width: 60px;
-      height: 50px;
-      margin: 10px 0;
+    &:hover {
       box-shadow: 10px 5px 5px #2a2a99;
     }
   }
 
   .result {
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -167,6 +158,7 @@ export default defineComponent({
     .run-result {
       padding: 5px;
       background-color: #282c34;
+      background-image: linear-gradient(270deg,#999999,#001100);
       color: #98c379;
     }
   }
