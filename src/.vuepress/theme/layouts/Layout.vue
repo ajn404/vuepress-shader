@@ -52,7 +52,7 @@ const showMirror = () => {
         min-width: 90vw;
         width: 90vw;
         position: fixed;
-        top: 30vh;
+        top: 20vh;
         background-color: azure;
         padding: 20px;
         z-index: 19;
@@ -75,14 +75,14 @@ const showMirror = () => {
     flex-direction: column;
     align-items: center;
     background-color: transparent;
-    right:2.5rem;
+    right:2rem;
     top: 3.6rem;
     z-index: -1;
     overflow: hidden;
 
     &.active {
         .iconfont {
-            height: 2em;
+            height: 1.5em;
         }
     }
 
@@ -90,12 +90,12 @@ const showMirror = () => {
         height: 0;
         transition: height .4s;
         line-height: 1.5;
-        font-size: 2em;
+        font-size: 1.5em;
         color: var(--c-text);
     }
 
     .icon-nav_drawer {
-        height: 2em;
+        height: 1.5em;
     }
 
     @media screen and (max-width: 900px) {

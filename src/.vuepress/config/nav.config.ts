@@ -62,7 +62,7 @@ const examples: NavbarGroup[] = [
         text: 'example',
         children: [
             {
-                text: '搬运',
+                text: 'shaderToy',
                 children: [
                     {
                         text: 'chicken behind window',

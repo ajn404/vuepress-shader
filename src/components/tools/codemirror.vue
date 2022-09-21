@@ -4,7 +4,7 @@
     <codemirror 
     v-model="code" 
       placeholder="在这里写代码" 
-      :style="{ padding: '10px 0' ,margin:'20px 0 0'}"
+      :style="{ padding: '10px 0' ,margin:'20px 0 0',maxHeight:'200px'}"
       :autofocus="true" 
       :indent-with-tab="true" 
       :tab-size="2" 
@@ -13,7 +13,9 @@
       @change="handelChange" />
 
     <div class="run">
+      
       <button class="btn" @click="run">运行</button>
+      <button class="btn" @click="clear">清空</button>
       <div class="result">
         <div contenteditable="true" class="run-result" v-if="codeRes" v-html="codeRes">
         </div>
@@ -91,9 +93,8 @@ export default defineComponent({
         //codeRes.value = eval(res.value)
         //eval=>new Function
         const template = res.value.replaceAll('console\.log', 'console\.reWriteLog');
-        res.value = `console.reWriteLog("运行成功啦! ");${template}`;
         
-        const func = new Function(res.value);
+        const func = new Function(`console.reWriteLog("运行成功啦! ");${template}`);
         func();
       }
       catch (err) {
@@ -102,6 +103,7 @@ export default defineComponent({
     }
 
     const clear = () => {
+      code.value = ""
       res.value = "";
       codeRes.value = "";
     }
@@ -122,21 +124,17 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .run {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
+ 
   .btn {
     border: none;
     padding: 5px;
-    margin: 10px 0 20px;
+    margin: 10px 20px 20px;
     color: #2a2a99;
     background-color: #aeddff;
     font-weight: bold;
     border-radius: 20%;
     width: 50px;
     height: 40px;
-    margin: 10px 0 20px;
     cursor: pointer;
     transition:all 1s;
     
@@ -150,6 +148,8 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     flex: 1;
+    max-height: 200px;
+    overflow-y: scroll;
 
     .result-tag {
       color: black;

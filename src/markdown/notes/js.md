@@ -458,7 +458,6 @@ y.hasOwnProperty("a");//false
 ```
 
 <div class="circle">
-
 </div>
 
 <style>
@@ -482,3 +481,19 @@ y.hasOwnProperty("a");//false
 </style>
 
 #### Object.getPrototypeOf()
+```js
+const obj = {}
+console.log(JSON.stringify(Object.getPrototypeOf(obj)))//{}
+class Fun{
+  constructor(name){
+    this.name = name
+  }
+
+  getName(){
+    return this.name
+  }
+}
+const fun = new Fun("fun")
+console.log(JSON.stringify(Object.getPrototypeOf(fun)))//{}
+
+```

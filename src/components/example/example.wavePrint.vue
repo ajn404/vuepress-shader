@@ -22,7 +22,7 @@ const props = defineProps({
 });
 
 let fragmentShader : string = fs,vertexShader:string  = vs;
-let doRotate  = true;
+let doRotate  = true,geometryX = 6,geometryY=5;
 if(props.type){
     switch(props.type){
         case 'Default':{
@@ -34,12 +34,15 @@ if(props.type){
             fragmentShader = cityFs;
             vertexShader = cityVs;
             doRotate = false;
+            geometryY=2;
             break;
         }
         case 'primitives':{
             fragmentShader = priFs;
             vertexShader = priVs;
             doRotate = false;
+            geometryX = 4;
+            geometryY = 1.3;
             break;
         }
 
@@ -114,7 +117,8 @@ sketch.resize = function () {
 }
 
 sketch.addObject = function () {
-    this.geometry = new THREE.PlaneGeometry(7, 4);
+
+    this.geometry = new THREE.PlaneGeometry(geometryX, geometryY);
     this.material = new THREE.ShaderMaterial(
         {
             uniforms: uniforms,
