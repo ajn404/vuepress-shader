@@ -94,6 +94,7 @@ export default defineComponent({
         //eval=>new Function
         const template = res.value.replaceAll('console\.log', 'console\.reWriteLog');
         
+        
         const func = new Function(`console.reWriteLog("运行成功啦! ");${template}`);
         func();
       }

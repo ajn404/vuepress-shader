@@ -494,6 +494,7 @@ class Fun{
   }
 }
 const fun = new Fun("fun")
-console.log(JSON.stringify(Object.getPrototypeOf(fun)))//{}
+console.log(JSON.stringify(Object.getPrototypeOf(fun)))//{} 
 
+console.log(fun.__proto__===Fun.prototype)
 ```
