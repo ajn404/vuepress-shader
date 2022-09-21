@@ -75,7 +75,11 @@ const examples: NavbarGroup[] = [
                     {
                         text:'fractal city(⚠️ gpu)',
                         link:`${exampleBaseUrl}fractalCity`
-                    }
+                    },
+                    {
+                        text:'primitives(⚠️ gpu)',
+                        link:`${exampleBaseUrl}primitives`
+                    },
                 ]
             }
         ]
@@ -134,6 +138,10 @@ const beforeBlog: NavbarGroup[] = [
                         link: 'https://ajn404.github.io/log.github.io/'
                     }
                 ]
+            },
+            {
+                text:'github home',
+                link:'https://github.com/ajn404'
             }
         ]
     }

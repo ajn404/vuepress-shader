@@ -91,7 +91,7 @@ const showMirror = () => {
         transition: height .4s;
         line-height: 1.5;
         font-size: 2em;
-        color: rgba(0,0,0,.7);
+        color: var(--c-text);
     }
 
     .icon-nav_drawer {

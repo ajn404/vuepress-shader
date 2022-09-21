@@ -12,9 +12,10 @@ import { ref, nextTick, onUnmounted } from "vue";
 // import shader
 import fs from '@shaders/examples/shaderToy/wavePrint/fragment.glsl'
 import vs from '@shaders/examples/shaderToy/wavePrint/vertex.glsl'
-
 import cityFs from '@shaders/examples/shaderToy/fractalCity/fragment.glsl'
 import cityVs from '@shaders/examples/shaderToy/fractalCity/vertex.glsl'
+import priFs from '@shaders/examples/shaderToy/primitives/fragment.glsl'
+import priVs from '@shaders/examples/shaderToy/primitives/vertex.glsl'
 
 const props = defineProps({
   type:String
@@ -32,6 +33,12 @@ if(props.type){
         case 'fractalCity':{
             fragmentShader = cityFs;
             vertexShader = cityVs;
+            doRotate = false;
+            break;
+        }
+        case 'primitives':{
+            fragmentShader = priFs;
+            vertexShader = priVs;
             doRotate = false;
             break;
         }
@@ -107,7 +114,7 @@ sketch.resize = function () {
 }
 
 sketch.addObject = function () {
-    this.geometry = new THREE.PlaneGeometry(2, 2);
+    this.geometry = new THREE.PlaneGeometry(7, 4);
     this.material = new THREE.ShaderMaterial(
         {
             uniforms: uniforms,
@@ -125,10 +132,7 @@ nextTick(() => {
     const options = {
         container: container.value || document.body
     };
-
     sketch.init(options);
-    sketch.camera.position.z = 0.7;
-    sketch.mesh.rotation.y = 0.5;
 })
 
 onUnmounted(() => {
