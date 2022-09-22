@@ -508,5 +508,100 @@ Foo.prototype.myName = function(){
   return this.name;
 }
 let a = new Foo('a');
-console.log(a.myName());
+console.log(a.myName()); //a
+console.log(a.constructor === Foo); //true
 ```
+:::tip 
+在new的过程中,a的内部[[prototype]]会关联到Foo.prototype上。
+当a中无法找到myName时,会通过委托在Foo.prototype上找到。
+同样，a.constructor委托给Foo.prototype,而Foo.prototype.constructor 默认指向Foo/
+:::
+
+##### 🤔思考下面的代码
+```js
+function Foo(name){
+  this.name = name;
+}
+Foo.prototype = {
+  myName:function(){
+    return this.name
+  }
+}
+const a = new Foo('a');
+console.log(a.constructor===Foo);//false
+console.log(a.constructor===Object);//true
+console.log(Foo.prototype.constructor===Foo);//false
+console.log(Foo.prototype.constructor===Object);//true
+```
+
+##### 原型继承
+```js
+function Foo(name){
+  this.name = name;
+}
+Foo.prototype.myName = function(){
+  return this.name;
+}
+
+function Bar(name,label){
+  Foo.call(this,name);
+  this.label = label;
+}
+
+//prototype关联
+Bar.prototype = Object.create(Foo.prototype);
+
+Bar.prototype.myLabel = function(){
+  return this.label;
+}
+
+const a = new Bar("a","obj a");
+console.log(a.myName());//A
+console.log(a.myLabel());//obj a
+
+```
+:::tip 
+关于使用`Bar.prototype = Object.create(Foo.prototype);`
+创建一个新对象并把它关联到Bar.prototype上，直接把原始的Bar.prototype抛弃。
+:::
+
+##### [Object.setPrototypeOf()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf)
+```js
+//ES6开始可以直接修改现有的Bar.prototype
+Object.setPrototypeOf(Bar.prototype,Foo.prototype)
+```
+
+##### 内省（反射）
+```js
+function Foo() {}
+function Bar() {}
+function Baz() {}
+Bar.prototype = Object.create(Foo.prototype);
+Baz.prototype = Object.create(Bar.prototype);
+const baz = new Baz();
+console.log(Baz.prototype.isPrototypeOf(baz)); // true
+console.log(Bar.prototype.isPrototypeOf(baz)); // true
+console.log(Foo.prototype.isPrototypeOf(baz)); // true
+console.log(Object.prototype.isPrototypeOf(baz)); // true
+```
+
+###### function name
+```js
+const func = ()=>{
+  console.log('func');
+}
+const symbolKey = Symbol("symbolKey description");
+
+const obj = {
+  objFunc:func,
+  [symbolKey](){
+    console.log('symbolFunc');
+  },
+}
+console.log(func.name);//func
+console.log(obj.objFunc.name); //func
+console.log((new Function()).name) //anonymous
+console.log(func.bind().name) //bound func
+console.log(obj[symbolKey].name) //[symbolKey description]
+```
+

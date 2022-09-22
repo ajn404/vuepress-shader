@@ -38,16 +38,11 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     uv.x*=u_resolution.x/u_resolution.y;
     uv+=0.5;
     uv.x+= u_time*0.1;
-
     float px = tiles/u_resolution.y;
-
     vec2 titleUv = fract(uv*tiles);
     float tile = hash21(stepPoint(uv,tiles));
-
     float col = smoothstep(0.0,px,sdfTile(titleUv,0.5,0.05,int(round(tile))) );
     fragColor = vec4(vec3(col),1.0);
-
-
 }
 
 void main(){
