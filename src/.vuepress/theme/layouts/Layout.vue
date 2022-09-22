@@ -40,9 +40,6 @@ const closeAll = ()=>{
 
 const showMirror = () => {
     showCodeMirror.value = !showCodeMirror.value;
-    if(showCodeMirror.value){
-
-    }
 }
 </script>
 

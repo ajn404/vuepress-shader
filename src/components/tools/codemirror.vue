@@ -35,6 +35,8 @@ import { Codemirror } from 'vue-codemirror'
 import { javascript } from '@codemirror/lang-javascript'
 import { oneDark } from '@codemirror/theme-one-dark'
 import { ref, shallowRef } from 'vue'
+import { useGlobalCode } from '@scripts/store.common.ts'
+import { storeToRefs } from 'pinia'
 
 export default defineComponent({
   components: {
@@ -44,9 +46,12 @@ export default defineComponent({
     codes: String
   },
   setup(props) {
+    const store = useGlobalCode();
+    const { globalCode,filteredCode } = storeToRefs(store)
+    
     const extensions = [javascript(), oneDark]
     //input
-    const code = ref(props.codes || "")
+    const code = ref( props.codes || filteredCode.value ||  globalCode.value || "")
     // Codemirror EditorView instance ref
     const view = shallowRef()
     const res = ref(code.value);
