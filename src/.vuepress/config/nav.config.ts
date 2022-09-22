@@ -80,6 +80,10 @@ const examples: NavbarGroup[] = [
                         text:'primitives(⚠️ gpu)',
                         link:`${exampleBaseUrl}primitives`
                     },
+                    {
+                        text:'simpleTruchetPattern',
+                        link:`${exampleBaseUrl}simpleTruchetPattern`
+                    }
                 ]
             }
         ]

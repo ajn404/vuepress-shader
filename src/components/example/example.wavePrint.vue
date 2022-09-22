@@ -17,6 +17,9 @@ import cityVs from '@shaders/examples/shaderToy/fractalCity/vertex.glsl'
 import priFs from '@shaders/examples/shaderToy/primitives/fragment.glsl'
 import priVs from '@shaders/examples/shaderToy/primitives/vertex.glsl'
 
+//simpleTruchetPattern
+import stpFs from '@shaders/examples/shaderToy/simpleTruchetPattern/fragment.glsl'
+import stpVs from '@shaders/examples/shaderToy/simpleTruchetPattern/vertex.glsl'
 const props = defineProps({
   type:String
 });
@@ -43,6 +46,14 @@ if(props.type){
             doRotate = false;
             geometryX = 4;
             geometryY = 1.3;
+            break;
+        }
+        case 'simpleTruchetPattern':{
+            fragmentShader = stpFs;
+            vertexShader = stpVs;
+            doRotate = false;
+            geometryX = 7.3;
+            geometryY = 3.8;
             break;
         }
 
