@@ -17,7 +17,7 @@
       <button class="btn" @click="run">运行</button>
       <button class="btn" @click="clear">清空</button>
       <div class="result">
-        <div contenteditable="true" class="run-result" v-if="codeRes" v-html="codeRes">
+        <div contenteditable="true" class="run-result"  v-html="codeRes">
         </div>
 
       </div>

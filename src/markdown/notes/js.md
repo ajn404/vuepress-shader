@@ -498,3 +498,15 @@ console.log(JSON.stringify(Object.getPrototypeOf(fun)))//{}
 
 console.log(fun.__proto__===Fun.prototype)
 ```
+
+#### JavaScript开发者绞尽脑汁想要模仿类的行为
+```js
+function Foo(name){
+  this.name = name;
+}
+Foo.prototype.myName = function(){
+  return this.name;
+}
+let a = new Foo('a');
+console.log(a.myName());
+```
