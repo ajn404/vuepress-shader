@@ -59,13 +59,13 @@ const showIcon = () => {
 const speak = () => {
     let text = '', dom: HTMLElement = document.querySelector('.theme-default-content');
     const synth = window.speechSynthesis;
-    if(!dom) return;
+    if (!dom) return;
     if (!synth.speaking) {
         text = dom.innerText;
         const utterance1 = new SpeechSynthesisUtterance(text);
         synth.speak(utterance1);
         audiuClass.value = "icon-audio"
-    }else{
+    } else {
         synth.cancel();
         audiuClass.value = "icon-audio_mute"
     }
@@ -98,6 +98,13 @@ const speak = () => {
     position: relative;
 
 
+}
+
+
+@media screen and (max-width: 900px) {
+    .tool-menu {
+        display: none!important;;
+    }
 }
 
 .tool-menu {
@@ -136,11 +143,6 @@ const speak = () => {
 
     }
 
-    @media screen and (max-width: 900px) {
-        .icon-game {
-            display: none;
-        }
-    }
 
 }
 </style>
