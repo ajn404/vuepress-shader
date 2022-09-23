@@ -9,7 +9,7 @@
                         <div class="iconfont icon-nav_drawer" @click="slideDown"></div>
                         <div class="iconfont icon-game" @click.stop="showMirror"></div>
                         <div class="iconfont icon-hints" @click.stop="showIcon"></div>
-                        <div class="iconfont icon-customer_service" @click.stop="speak"></div>
+                        <div :class="`iconfont ${audiuClass}`" @click.stop="speak"></div>
                     </div>
                 </div>
             </template>
@@ -27,6 +27,8 @@ import { ref } from 'vue';
 const showCodeMirror = ref(false);
 const showIconCollection = ref(false);
 const menuClass = ref(["tool-menu"]);
+
+const audiuClass = ref("icon-audio")
 
 const slideDown = () => {
     if (!menuClass.value.includes("active")) {
@@ -62,8 +64,10 @@ const speak = () => {
         text = dom.innerText;
         const utterance1 = new SpeechSynthesisUtterance(text);
         synth.speak(utterance1);
+        audiuClass.value = "icon-audio"
     }else{
         synth.cancel();
+        audiuClass.value = "icon-audio_mute"
     }
 
 
