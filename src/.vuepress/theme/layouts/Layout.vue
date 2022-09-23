@@ -63,7 +63,7 @@ const speak = () => {
         const utterance1 = new SpeechSynthesisUtterance(text);
         synth.speak(utterance1);
     }else{
-        synth.pause();
+        synth.cancel();
     }
 
 

@@ -137,9 +137,7 @@ const copy = (item)=>{
     .then(()=>{
         const synth = window.speechSynthesis;
         const utterance = new SpeechSynthesisUtterance("复制成功");
-        if(!synth.speaking){
-            synth.speak(utterance)
-        }
+        synth.speak(utterance)
     })
     .catch(err=>{console.log(err)})
     
