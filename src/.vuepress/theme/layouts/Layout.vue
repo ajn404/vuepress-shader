@@ -8,6 +8,8 @@
                     <div :class="menuClass">
                         <div class="iconfont icon-nav_drawer" @click="slideDown"></div>
                         <div class="iconfont icon-game" @click.stop="showMirror"></div>
+                        <div class="iconfont icon-hints" @click.stop="showIcon"></div>
+                        <div class="iconfont icon-customer_service" @click.stop="speak"></div>
                     </div>
                 </div>
             </template>
@@ -15,12 +17,15 @@
             <template #page-top></template>
         </ParentLayout>
     </transition>
-    <codemirror class="code-mirror" v-show="showCodeMirror"></codemirror>
+    <codemirror class="fixed-dialog" v-show="showCodeMirror" />
+    <iconCollection class="fixed-dialog" v-show="showIconCollection" />
+
 </template>
 <script setup lang="ts">
 import ParentLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue";
 import { ref } from 'vue';
 const showCodeMirror = ref(false);
+const showIconCollection = ref(false);
 const menuClass = ref(["tool-menu"]);
 
 const slideDown = () => {
@@ -33,36 +38,62 @@ const slideDown = () => {
         })
     }
 }
-
-const closeAll = ()=>{
+const closeAll = () => {
+    showCodeMirror.value = false;
+    showIconCollection.value = false;
+}
+const showMirror = () => {
+    showCodeMirror.value = !showCodeMirror.value;
+    showIconCollection.value = false;
+}
+const showIcon = () => {
+    showIconCollection.value = !showIconCollection.value;
     showCodeMirror.value = false;
 }
 
-const showMirror = () => {
-    showCodeMirror.value = !showCodeMirror.value;
-}
-</script>
 
 
-<style lang="scss" scoped>
-    .code-mirror {
-        min-width: 90vw;
-        width: 90vw;
-        position: fixed;
-        top: 20vh;
-        background-color: azure;
-        padding: 20px;
-        z-index: 19;
-        &:hover{
-            outline: 1px dotted salmon;
-        }
-        border-radius: 1rem;
-        left: 5vw;
+
+const speak = () => {
+    let text = '', dom: HTMLElement = document.querySelector('.theme-default-content');
+    const synth = window.speechSynthesis;
+    if(!dom) return;
+    if (!synth.speaking) {
+        text = dom.innerText;
+        const utterance1 = new SpeechSynthesisUtterance(text);
+        synth.speak(utterance1);
+    }else{
+        synth.pause();
     }
+
+
+}
+
+</script>
+<style lang="scss" scoped>
+.fixed-dialog {
+    min-width: 90vw;
+    width: 90vw;
+    position: fixed;
+    top: 20vh;
+    background-color: azure;
+    padding: 20px;
+    z-index: 30;
+    max-height: 30em;
+    overflow-y: scroll;
+
+    &:hover {
+        outline: 1px dotted salmon;
+    }
+
+    border-radius: 1rem;
+    left: 5vw;
+}
+
 .navbar-after {
     position: relative;
 
-    
+
 }
 
 .tool-menu {
@@ -72,7 +103,7 @@ const showMirror = () => {
     flex-direction: column;
     align-items: center;
     background-color: transparent;
-    right:2rem;
+    right: 2rem;
     top: 3.6rem;
     z-index: -1;
     overflow: hidden;
@@ -89,10 +120,16 @@ const showMirror = () => {
         line-height: 1.5;
         font-size: 1.5em;
         color: var(--c-text);
+        cursor: pointer;
+
+        &:hover {
+            color: var(--c-brand);
+        }
     }
 
     .icon-nav_drawer {
         height: 1.5em;
+
     }
 
     @media screen and (max-width: 900px) {
@@ -100,11 +137,6 @@ const showMirror = () => {
             display: none;
         }
     }
-
-    .icon-game {
-        cursor: context-menu;
-    }
-
 
 }
 </style>

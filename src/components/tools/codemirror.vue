@@ -1,8 +1,7 @@
 <template>
-
   <div class="codemirror-tool-box">
     <codemirror 
-    v-model="code" 
+      v-model="code" 
       placeholder="在这里写代码" 
       :style="{ padding: '10px 0' ,margin:'20px 0 0',maxHeight:'200px'}"
       :autofocus="true" 
@@ -11,15 +10,12 @@
       :extensions="extensions" 
       @ready="handleReady"
       @change="handelChange" />
-
     <div class="run">
-      
       <button class="btn" @click="run">运行</button>
       <button class="btn" @click="clear">清空</button>
       <div class="result">
-        <div contenteditable="true" class="run-result"  v-html="codeRes">
+        <div contenteditable="true" class="run-result" v-html="codeRes">
         </div>
-
       </div>
     </div>
 
@@ -38,6 +34,7 @@ import { ref, shallowRef } from 'vue'
 import { useGlobalCode } from '@scripts/store.common.ts'
 import { storeToRefs } from 'pinia'
 
+
 export default defineComponent({
   components: {
     Codemirror
@@ -47,11 +44,11 @@ export default defineComponent({
   },
   setup(props) {
     const store = useGlobalCode();
-    const { globalCode,filteredCode } = storeToRefs(store)
-    
+    const { globalCode, filteredCode } = storeToRefs(store)
+
     const extensions = [javascript(), oneDark]
     //input
-    const code = ref( props.codes || filteredCode.value ||  globalCode.value || "")
+    const code = ref(props.codes || filteredCode.value || globalCode.value || "")
     // Codemirror EditorView instance ref
     const view = shallowRef()
     const res = ref(code.value);
@@ -63,19 +60,6 @@ export default defineComponent({
     const handelChange = (e) => {
       res.value = e;
     }
-
-    // Status is available at all times via Codemirror EditorView
-    const getCodemirrorStates = () => {
-      const state = view.value.state
-      const ranges = state.selection.ranges
-      const selected = ranges.reduce((r, range) => r + range.to - range.from, 0)
-      const cursor = ranges[0].anchor
-      const length = state.doc.length
-      const lines = state.doc.lines
-      // more state info ...
-      // return ...
-    }
-
     // let reWrite = console.log;
     console.reWriteLog = function () {
       let t = []
@@ -98,8 +82,8 @@ export default defineComponent({
         //codeRes.value = eval(res.value)
         //eval=>new Function
         const template = res.value.replaceAll('console\.log', 'console\.reWriteLog');
-        
-        
+
+
         const func = new Function(`console.reWriteLog("运行成功啦! ");${template}`);
         func();
       }
@@ -130,7 +114,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .run {
- 
+
   .btn {
     border: none;
     padding: 5px;
@@ -142,8 +126,8 @@ export default defineComponent({
     width: 50px;
     height: 40px;
     cursor: pointer;
-    transition:all 1s;
-    
+    transition: all 1s;
+
     &:hover {
       box-shadow: 10px 5px 5px #2a2a99;
     }
@@ -165,7 +149,7 @@ export default defineComponent({
     .run-result {
       padding: 5px;
       background-color: #282c34;
-      background-image: linear-gradient(270deg,#999999,#001100);
+      background-image: linear-gradient(270deg, #999999, #001100);
       color: #98c379;
     }
   }
