@@ -32,6 +32,10 @@ const practice: NavbarGroup[] = [
                     {
                         text: '旋转和缩放',
                         link: `${practiceBaseUrl}shapingFunction`
+                    },
+                    {
+                        text:'中心旋转',
+                        link: `${practiceBaseUrl}rotatingTheShape`
                     }
                 ]
             },

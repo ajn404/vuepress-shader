@@ -27,7 +27,7 @@ float rect(vec2 pt, vec2 anchor, vec2 size, vec2 center){
 
 void main (void)
 {
-  vec2 center = vec2(0, 0);
+  vec2 center = vec2(0.5, 0.5);
   mat2 matr = getRotationMatrix(u_time);
   mat2 mats = getScaleMatrix((sin(u_time)+1.0)/3.0 + 0.5);
   vec2 pt = (mats * matr * (v_position.xy - center)) + center;

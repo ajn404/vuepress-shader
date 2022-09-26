@@ -14,18 +14,24 @@ import vs from '@shaders/practice/shapingFunction/vertex.glsl'
 // import varingsFs from '@shaders/practice/blendingColor/varyingFs.glsl';
 // import varingsVs from '@shaders/practice/blendingColor/varyingVs.glsl';
 
-const props = defineProps({
-  type:String
-});
+import rtsFs from '@shaders/practice/rotatingTheShape/fragment.glsl'
+import rtsVs from '@shaders/practice/rotatingTheShape/vertex.glsl'
 
-let fragmentShader : string = fs,vertexShader:string  = vs;
-// if(props.type){
-//     fragmentShader = varingsFs;
-//     vertexShader = varingsVs;
-// }
 
+const props = defineProps({type:String});
+
+let fragmentShader : string = fs,vertexShader : string  = vs ;
+switch(props.type){
+    case "rts":{
+        fragmentShader = rtsFs;
+        vertexShader = rtsVs;
+        break;
+    }
+    default:{
+        break;
+    }
+}
 const container = ref(null);
-
 const uniforms = {
 
     u_time: { value: 0.0 },
@@ -45,7 +51,6 @@ const uniforms = {
         value: new THREE.Color(0x00fff0)
     }
 };
-
 const clock = new THREE.Clock();
 
 let sketch = new Sketch();

@@ -11,19 +11,20 @@ mat2 rot(float a){return mat2(cos(a),-sin(a),sin(a),cos(a));}
 
 vec3 look(vec3 from,vec3 at,vec2 uv,float fov)
 {
-    vec3 z=normalize(at-from);
-    vec3 x=normalize(cross(z,vec3(0,1,0)));
-    vec3 y=cross(x,z);
-    return normalize(z*fov+uv.x*x+uv.y*y);
+  vec3 z=normalize(at-from);
+  vec3 x=normalize(cross(z,vec3(0,1,0)));
+  vec3 y=cross(x,z);
+  return normalize(z*fov+uv.x*x+uv.y*y);
 }
 
 const uint k=1103515245U;
+
 vec3 hash(uvec3 x)
 {
-    x=((x>>8U)^x.yzx)*k;
-    x=((x>>8U)^x.yzx)*k;
-    x=((x>>8U)^x.yzx)*k;
-    return vec3(x)*(1./float(0xffffffffU));
+  x=((x>>8U)^x.yzx)*k;
+  x=((x>>8U)^x.yzx)*k;
+  x=((x>>8U)^x.yzx)*k;
+  return vec3(x)*(1./float(0xffffffffU));
 }
 
 const float speed=.05;
@@ -38,21 +39,18 @@ float mat,glow;
 
 float map(vec3 p)
 {
-    float dist=100.;
-    float shape=100.;
-    vec3 pos=p;
-    pp=p;
-    ppp=p;
-    
-    // travel
-    float px=p.x-u_time*speed;
-    float ix=floor(px);
-    p.x=repeat(px,1.);
-    
-    // city
-    float a=1.;
-    float angle=196.+ix;
-    for(float i=0.;i<count;++i)
+   float dist = 100.;
+   float shape = 100.;
+   vec3 pos = p;
+   pp = p;
+   ppp = p;// travel
+   float px=p.x-u_time*speed;
+   float ix=floor(px);
+   p.x=repeat(px,1.); 
+   // city
+   float a=1.;
+   float angle=196.+ix;
+   for(float i=0.;i<count;++i)
     {
         p.xz*=rot(angle/a);
         p=abs(p)-range*a;
@@ -80,18 +78,20 @@ float map(vec3 p)
 }
 
 // from Inigo Quilez
-float shadow(vec3 pos,vec3 at,float k){
-    vec3 dir=normalize(at-pos);
-    float maxt=length(at-pos);
-    float f=1.;
-    float t=.002;
-    for(float i=0.;i<=1.;i+=1./30.){
-        float dist=map(pos+dir*t);
-        if(dist<.001)return 0.;
-        f=min(f,k*dist/t);
-        t+=dist;
-        if(t>=maxt)break;
-    }
+float shadow(vec3 pos,vec3 at,float k)
+{
+  vec3 dir=normalize(at-pos);
+  float maxt=length(at-pos);
+  float f=1.;
+  float t=.002;
+  for(float i=0.;i<=1.;i+=1./30.)
+{
+    float dist=map(pos+dir*t);
+    if(dist<.001)return 0.;
+      f=min(f,k*dist/t);
+      t+=dist;
+      if(t>=maxt)break;
+}
     return f;
 }
 
@@ -99,11 +99,10 @@ void rect(out vec4 fragColor,in vec2 fragCoord){
 fragColor=vec4(0.,0.,0.,0.); 
    const float frames=3.;
     for(float frame=0.;frame<frames;++frame)
-    {
+{
         // coordinates
-        vec2 uv=fragCoord/R.xy;
-        vec2 p=2.*(fragCoord-R.xy/2.)/R.y;
-        
+    vec2 uv=fragCoord/R.xy;
+    vec2 p=2.*(fragCoord-R.xy/2.)/R.y;    
         // anti aliasing
         float aa=6.28*frame/frames;
         p+=vec2(cos(aa),sin(aa))/R.xy;
@@ -115,7 +114,6 @@ fragColor=vec4(0.,0.,0.,0.);
         // init globals
         glow=0.;
         mat=0.;
-        
         // raymarch
         float total=0.;
         float steps=0.;
@@ -128,9 +126,7 @@ fragColor=vec4(0.,0.,0.,0.);
             total+=dist;
             pos+=ray*dist;
         }
-        
         vec4 result;
-        
         if(total<max_dist)
         {
             // lighting
@@ -159,6 +155,7 @@ fragColor=vec4(0.,0.,0.,0.);
     }
 }
 
-void main(){
-    rect(gl_FragColor,vUv * u_resolution.xy);
+void main()
+{
+  rect(gl_FragColor,vUv * u_resolution.xy);
 }
