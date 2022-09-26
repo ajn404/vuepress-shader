@@ -1,12 +1,12 @@
 ---
-title: ecma翻译/copy
-sidebar: true
+title: ecma翻译
 ---
 <style>
 .tip-aqua{
     width:100%;
     color:aqua;
     line-height: 1.4;
+    font-size:1.5em;
     margin-bottom: 2em;
 }
 .no-wrap{
@@ -97,6 +97,7 @@ new Date(2009,11)
 <p class="tip-aqua">{{new Date(2009,11)}}</p>
 Date()
 <p class="tip-aqua">{{Date()}}</p>
+
 ::: warning constructor
 Invoking a constructor without using new has consequences that depend on the constructor
 :::
@@ -622,6 +623,11 @@ Object.defineProperty(Object,'is',{
 })
 ```
 ###### Object.assign
+<div class='tip-aqua'>
+The assign function is used to copy the values of all of the enumerable own properties from one or more
+source objects to a target object.
+</div>
+
 ```js
 const target = {
   a:1,
@@ -642,3 +648,71 @@ source1.b = 20;
 console.log(JSON.stringify(target))
 //{"a":1,"b":10,"c":[3,2,1],"d":"d","e":{"b":20,"c":[3,2,1],"d":"d"}}
 ```
+Object.assign的常用场景
+::: tip 1.为对象添加属性
+:::
+```js
+class Point{
+  constructor(a,b){
+    Object.assign(this,{a,b})
+  }
+}
+const newPoint = new Point("abb","bba")
+//Point {a: 'abb', b: 'bba'}
+```
+::: tip 2.为对象添加方法
+:::
+```js
+Object.assign(Object.prototype,{
+  getName(){
+    return this.name
+  },
+  getAge(){
+    return this.age
+  }
+})
+const x = {
+  name:'x',
+  age:'5'
+}
+x.getName();
+x.getAge();
+for(item in x){
+  console.log(item);
+}
+//for ... in 循环遍历对象自身和继承的可枚举属性  
+```
+::: tip 3.克隆对象
+:::
+```js
+const clone = function(origin){
+  return Object.assign({},origin);
+}
+```
+上述方法无法克隆origin的继承链
+```js
+const clone = function(origin){
+  const originProto = Object.getPrototypeOf(origin);
+  return Object.assign(Object.create(originProto),origin);
+}
+const x = {
+  name :'x',
+  age:11
+}
+Object.defineProperty(Object.prototype,"hh",{
+  value:false,
+  configurable:true,
+  enumerable:true,
+  writable:true,})
+//emuerable一定要设为true
+const tar = clone(x);
+console.log(tar);
+```
+:::tip 4.合并多个对象
+:::
+```js
+const merge = (target,...source)=>Object.assign(target,...source);
+//如果要返回新对象
+const mergeNew = (...source)=>Object.assign({},...source);
+```
+

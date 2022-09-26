@@ -38,8 +38,8 @@
   }
 }
 
-.page-meta {
-  display: none;
+.page-meta ,.back-to-top{
+  display: none!important;
 }
 
 @media screen and (max-width: 900px) {
