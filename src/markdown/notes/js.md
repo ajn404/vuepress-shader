@@ -604,4 +604,41 @@ console.log((new Function()).name) //anonymous
 console.log(func.bind().name) //bound func
 console.log(obj[symbolKey].name) //[symbolKey description]
 ```
-
+###### Object.is
+```js
+//ES5
+Object.defineProperty(Object,'is',{
+  value:function(x,y){
+    if(x===y){
+      return x!==0 || 1/x=== 1/y;
+    }
+    //Object.is(NaN,NaN)
+    //true
+    return x!==x&&y!==y
+  },
+  configurable:true,
+  enumerable:false,
+  writable:true,
+})
+```
+###### Object.assign
+```js
+const target = {
+  a:1,
+  b:[],
+  c:[1,2,3]
+}
+const source1 = {
+  b:10,
+  c:[3,2,1],
+  d:"d"
+}
+const source2 = {
+  e:source1
+}
+console.log(JSON.stringify(Object.assign(target,source1,source2)));
+//assign浅复制
+source1.b = 20;
+console.log(JSON.stringify(target))
+//{"a":1,"b":10,"c":[3,2,1],"d":"d","e":{"b":20,"c":[3,2,1],"d":"d"}}
+```
