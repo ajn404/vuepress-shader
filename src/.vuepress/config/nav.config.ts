@@ -87,6 +87,10 @@ const examples: NavbarGroup[] = [
                     {
                         text:'simpleTruchetPattern',
                         link:`${exampleBaseUrl}simpleTruchetPattern`
+                    },
+                    {
+                        text:'ed209',
+                        link:`${exampleBaseUrl}ed209`
                     }
                 ]
             }

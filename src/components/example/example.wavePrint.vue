@@ -20,6 +20,10 @@ import priVs from '@shaders/examples/shaderToy/primitives/vertex.glsl'
 //simpleTruchetPattern
 import stpFs from '@shaders/examples/shaderToy/simpleTruchetPattern/fragment.glsl'
 import stpVs from '@shaders/examples/shaderToy/simpleTruchetPattern/vertex.glsl'
+
+//simpleTruchetPattern
+import edFs from '@shaders/examples/shaderToy/ed209/fragment.glsl'
+import edVs from '@shaders/examples/shaderToy/ed209/vertex.glsl'
 const props = defineProps({
   type:String
 });
@@ -54,6 +58,15 @@ if(props.type){
             doRotate = false;
             geometryX = 7.3;
             geometryY = 3.8;
+            break;
+        }
+
+        case 'ed209':{
+            fragmentShader = edFs;
+            vertexShader = edVs;
+            doRotate = false;
+            geometryX = 5.12;
+            geometryY = 2.88;
             break;
         }
 
