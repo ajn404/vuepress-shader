@@ -23,10 +23,15 @@
   background: var(--c-brand);
 }
 
-.page .theme-default-content {
-  // max-width: 100vw;
-  padding: 0;
 
+
+.page .theme-default-content {
+  max-width: 90vw;
+  padding: 0;
+table{
+  display: table;
+  margin: 1em auto;
+}
   .fullscreen {
     height: calc(100vh - var(--navbar-height));
     // height: auto;

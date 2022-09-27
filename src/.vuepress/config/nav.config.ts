@@ -34,25 +34,25 @@ const practice: NavbarGroup[] = [
                         link: `${practiceBaseUrl}shapingFunction`
                     },
                     {
-                        text:'中心旋转',
+                        text: '中心旋转',
                         link: `${practiceBaseUrl}rotatingTheShape`
                     }
                 ]
             },
             {
-                text:'glsl functions',
-                children:[
+                text: 'glsl functions',
+                children: [
                     {
-                        text:'clamp',
-                        link:`${practiceBaseUrl}usingClamp`
+                        text: 'clamp',
+                        link: `${practiceBaseUrl}usingClamp`
                     },
                     {
-                        text:'step circle',
-                        link:`${practiceBaseUrl}usingStep`,
+                        text: 'step circle',
+                        link: `${practiceBaseUrl}usingStep`,
                     },
                     {
-                        text:'step square',
-                        link:`${practiceBaseUrl}stepDrawSquare`
+                        text: 'step square',
+                        link: `${practiceBaseUrl}stepDrawSquare`
                     }
                 ]
             }
@@ -73,24 +73,24 @@ const examples: NavbarGroup[] = [
                         link: `${exampleBaseUrl}lightSaberDuel`
                     },
                     {
-                        text:'❄️❄️❄️❄️❄️ snow flake',
-                        link:`${exampleBaseUrl}wavePrint`
+                        text: '❄️❄️❄️❄️❄️ snow flake',
+                        link: `${exampleBaseUrl}wavePrint`
                     },
                     {
-                        text:'fractal city(⚠️ gpu)',
-                        link:`${exampleBaseUrl}fractalCity`
+                        text: 'fractal city(⚠️ gpu)',
+                        link: `${exampleBaseUrl}fractalCity`
                     },
                     {
-                        text:'primitives(⚠️ gpu)',
-                        link:`${exampleBaseUrl}primitives`
+                        text: 'primitives(⚠️ gpu)',
+                        link: `${exampleBaseUrl}primitives`
                     },
                     {
-                        text:'simpleTruchetPattern',
-                        link:`${exampleBaseUrl}simpleTruchetPattern`
+                        text: 'simpleTruchetPattern',
+                        link: `${exampleBaseUrl}simpleTruchetPattern`
                     },
                     {
-                        text:'ed209',
-                        link:`${exampleBaseUrl}ed209`
+                        text: 'ed209',
+                        link: `${exampleBaseUrl}ed209`
                     }
                 ]
             }
@@ -109,9 +109,18 @@ const note: NavbarGroup[] = [
             }, {
                 text: 'js基础（ecma）',
                 link: `${noteBaseUrl}js`
-            },{
+            }, {
                 text: '命令行注释',
                 link: `${noteBaseUrl}shell`
+            },
+            {
+                text: 'example analyze',
+                children: [
+                    {
+                        text: 'glsl collect',
+                        link: `${noteBaseUrl}exampleGlslCollect`
+                    }
+                ]
             }
         ]
     }
@@ -152,8 +161,8 @@ const beforeBlog: NavbarGroup[] = [
                 ]
             },
             {
-                text:'github home',
-                link:'https://github.com/ajn404'
+                text: 'github home',
+                link: 'https://github.com/ajn404'
             }
         ]
     }
