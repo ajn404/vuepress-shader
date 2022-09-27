@@ -56,3 +56,36 @@ Request timeout for icmp_seq 2
 12 packets transmitted, 11 packets received, 8.3% packet loss
 round-trip min/avg/max/stddev = 12.005/19.854/26.769/3.785 ms
 ```
+
+### [ncv](https://github.com/raineorshine/npm-check-updates)
+:::tip
+npm install -g npm-check-updates
+ncu
+ncu -u
+:::
+```shell
+npm install -g npm-check-updates
+added 273 packages in 11s
+
+[ajn404@ajn404deMacBook-Air vuepress-shader % ncu
+Using yarn
+Checking /Users/ajn404/Documents/blog/vuepress-shader/package.json
+[====================] 10/10 100%
+
+ @codemirror/lang-javascript    ^6.0.2  →    ^6.1.0
+ three                        ^0.142.0  →  ^0.144.0
+ unplugin-vue-components       ^0.22.0  →   ^0.22.7
+
+Run ncu -u to upgrade package.json
+
+[ajn404@ajn404deMacBook-Air vuepress-shader % ncu -u
+Using yarn
+Upgrading /Users/ajn404/Documents/blog/vuepress-shader/package.json
+[====================] 10/10 100%
+
+ @codemirror/lang-javascript    ^6.0.2  →    ^6.1.0
+ three                        ^0.142.0  →  ^0.144.0
+ unplugin-vue-components       ^0.22.0  →   ^0.22.7
+
+Run yarn install to install new versions.
+```
