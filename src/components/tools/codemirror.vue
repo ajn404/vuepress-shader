@@ -1,18 +1,12 @@
 <template>
   <div class="codemirror-tool-box">
-    <codemirror 
-      v-model="code" 
-      placeholder="在这里写代码" 
-      :style="{ padding: '10px 0' ,margin:'20px 0 0',maxHeight:'200px'}"
-      :autofocus="true" 
-      :indent-with-tab="true" 
-      :tab-size="2" 
-      :extensions="extensions" 
-      @ready="handleReady"
+    <codemirror v-model="code" placeholder="在这里写代码" :style="{ padding: '10px 0' ,margin:'20px 0 0',maxHeight:'200px'}"
+      :autofocus="true" :indent-with-tab="true" :tab-size="2" :extensions="extensions" @ready="handleReady"
       @change="handelChange" />
     <div class="run">
       <button class="btn" @click="run">运行</button>
       <button class="btn" @click="clear">清空</button>
+      <button class="btn" @click="refresh">刷新</button>
       <div class="result">
         <div contenteditable="true" class="run-result" v-html="codeRes">
         </div>
@@ -30,9 +24,10 @@ import { defineComponent } from 'vue'
 import { Codemirror } from 'vue-codemirror'
 import { javascript } from '@codemirror/lang-javascript'
 import { oneDark } from '@codemirror/theme-one-dark'
-import { ref, shallowRef } from 'vue'
+import { ref, shallowRef, nextTick } from 'vue'
 import { useGlobalCode } from '@scripts/store.common.ts'
 import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
 
 
 export default defineComponent({
@@ -44,11 +39,16 @@ export default defineComponent({
   },
   setup(props) {
     const store = useGlobalCode();
-    const { globalCode, filteredCode } = storeToRefs(store)
+    const { globalCode, filteredCode } = storeToRefs(store);
+    const extensions = [javascript(), oneDark];
+    const router = useRouter();
+    const demoCode = `[].forEach.call(document.querySelectorAll("a"), (a) => {
+  a.style.outline ="5px solid #" + (~~(Math.random() * (1 << 24))).toString(16);
+  console.log(a.style.outline);
+});`
 
-    const extensions = [javascript(), oneDark]
     //input
-    const code = ref(props.codes || filteredCode.value || globalCode.value || "")
+    const code = ref(props.codes || filteredCode.value || globalCode.value || demoCode)
     // Codemirror EditorView instance ref
     const view = shallowRef()
     const res = ref(code.value);
@@ -82,21 +82,27 @@ export default defineComponent({
         //codeRes.value = eval(res.value)
         //eval=>new Function
         const template = res.value.replaceAll('console\.log', 'console\.reWriteLog');
-
-
         const func = new Function(`console.reWriteLog("运行成功啦! ");${template}`);
         func();
       }
       catch (err) {
         codeRes.value = `出错喽，帅哥！<br/>${err}`;
       }
-    }
+    };
 
     const clear = () => {
       code.value = ""
       res.value = "";
       codeRes.value = "";
-    }
+    };
+
+    const refresh = () => { 
+        router.go(0);
+    };
+
+    nextTick(() => {
+      // run()
+    })
 
     return {
       extensions,
@@ -107,13 +113,21 @@ export default defineComponent({
       handelChange,
       run,
       clear,
+      refresh
     }
   }
 })
 </script>
 
 <style scoped lang="scss">
+.codemirror-tool-box {
+  display: flex;
+  flex-direction: column;
+}
+
 .run {
+  flex-grow: 1;
+  overflow-y: scroll;
 
   .btn {
     border: none;
@@ -138,7 +152,6 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     flex: 1;
-    max-height: 200px;
     overflow-y: scroll;
 
     .result-tag {

@@ -6,7 +6,7 @@
             <template #navbar-after>
                 <div class="navbar-after">
                     <div :class="menuClass">
-                        <div class="iconfont icon-nav_drawer" @click="slideDown" ref="parentLayout"></div>
+                        <div class="iconfont icon-nav_drawer" @click="slideDown" @mouseover.native="showMenu()" ref="parentLayout"></div>
                         <div class="iconfont icon-game" @click.stop="showMirror"></div>
                         <div class="iconfont icon-hints" @click.stop="showIcon"></div>
                         <div :class="`iconfont ${audiuClass}`" @click.stop="speak"></div>
@@ -22,6 +22,7 @@
     </transition>
     <codemirror class="fixed-dialog" v-show="showCodeMirror" />
     <iconCollection class="fixed-dialog" v-show="showIconCollection" />
+    <div class="fixed-dialog" id="hutao" v-show="backImg"></div>
 
 </template>
 <script setup lang="ts">
@@ -35,27 +36,42 @@ const audiuClass = ref("icon-audio")
 
 const parentLayout = ref(null);
 
-const slideDown = () => {
-    if (!menuClass.value.includes("active")) {
-        menuClass.value.push("active")
-    }
-    else {
-        menuClass.value = menuClass.value.filter((item, index) => {
+
+const showMenu = ()=>{
+    menuClass.value.push("active")
+}
+
+const hideMenu =()=>{
+    menuClass.value = menuClass.value.filter((item, index) => {
             return item !== "active"
         })
+}
+
+const slideDown = () => {
+    if (!menuClass.value.includes("active")) {
+        showMenu()
+    }
+    else {
+       hideMenu()
     }
 }
+
+
+
 const closeAll = () => {
     showCodeMirror.value = false;
     showIconCollection.value = false;
+    backImg.value = ''
 }
 const showMirror = () => {
     showCodeMirror.value = !showCodeMirror.value;
     showIconCollection.value = false;
+    backImg.value = '';
 }
 const showIcon = () => {
     showIconCollection.value = !showIconCollection.value;
     showCodeMirror.value = false;
+    backImg.value = ''
 }
 
 
@@ -100,18 +116,19 @@ const changeStyle = () => {
     //     }
     // });
 
-    const styleImages = ["/vuepress-shader/images/hutao1.png",
-                        "/vuepress-shader/images/hutao2.jpg",
-                        "/vuepress-shader/images/hutao3.png",
-                        "/vuepress-shader/images/hutao4.jpg",
-                        "/vuepress-shader/images/hutao5.png",
-                        "/vuepress-shader/images/hutao6.jpg",
-                        ""
-                            ];
+    const styleImages = [
+        "/vuepress-shader/images/hutao1.png",
+        "/vuepress-shader/images/hutao2.jpg",
+        "/vuepress-shader/images/hutao3.png",
+        "/vuepress-shader/images/hutao4.jpg",
+        "/vuepress-shader/images/hutao5.png",
+        "/vuepress-shader/images/hutao6.jpg",
+        "/vuepress-shader/images/hutao7.png",
+    ];
     if (document.body) {
-        const app: HTMLElement = document.querySelector('#app');
-        backImg.value = styleImages[Math.floor(Math.random()*7)];
-        app.style.background = `url(${backImg.value}) top/100% 100% no-repeat fixed`;
+        const app: HTMLElement = document.querySelector('#hutao');
+        backImg.value = styleImages[Math.floor(Math.random() * 7)];
+        app.style.background = `url(${backImg.value}) center/100% auto no-repeat fixed`;
     }
 
 }
@@ -122,19 +139,20 @@ const changeStyle = () => {
     min-width: 90vw;
     width: 90vw;
     position: fixed;
-    top: 20vh;
+    left: 0;
+    top: 3.6rem;
     background-color: azure;
     padding: 20px;
-    z-index: 30;
-    max-height: 30em;
+    z-index: 19;
     overflow-y: scroll;
+    max-height: 80vh;
+    height: 80vh;
 
     &:hover {
         outline: 1px dotted salmon;
     }
 
     border-radius: 1rem;
-    left: 5vw;
 }
 
 .navbar-after {
