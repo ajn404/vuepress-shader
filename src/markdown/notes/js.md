@@ -704,7 +704,7 @@ Object.defineProperty(Object.prototype,"hh",{
   configurable:true,
   enumerable:true,
   writable:true,})
-//emuerable一定要设为true
+//enumerable一定要设为true
 const tar = clone(x);
 console.log(tar);
 ```
@@ -715,4 +715,62 @@ const merge = (target,...source)=>Object.assign(target,...source);
 //如果要返回新对象
 const mergeNew = (...source)=>Object.assign({},...source);
 ```
+:::tip 5.为属性指定默认值
+:::
+```js
+const DEFAULT = {
+  logLevel:0,
+  outputFormat:'html'
+}
+
+function processContent(options){
+  options = Object.assign({},DEFAULT,options);
+  console.log(options);
+  //...
+}
+```
+###### Object.getOwnPropertyDescriptor
+获取属性的描述对象
+```js
+const obj = {
+  val:12
+}
+console.log(Object.getOwnPropertyDescriptor(obj,'val'));
+```
+:::tip 小知识
+JSON.stringify只串行化对象自身的可枚举属性;
+:::
+
+###### 属性的遍历
+
+::: tip for...in
+:::
+```js
+const obj = {
+  a:1,
+  b:[1,2,3],
+  c:{
+    name:'c'
+  }
+}
+Object.defineProperty(obj,'d',{
+  value:'d',
+  enumerable:false,
+  writable:true,
+})
+
+Object.defineProperty(Object.prototype,"e",{
+  enumerable:true,
+  value:'e'
+})
+
+const sym = Symbol("sym description");
+obj.sym = 'sym value'
+
+for(let item in obj){
+  console.log(item,obj[item]);
+}
+
+```
+
 

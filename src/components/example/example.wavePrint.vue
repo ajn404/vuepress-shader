@@ -48,16 +48,16 @@ if(props.type){
             fragmentShader = priFs;
             vertexShader = priVs;
             doRotate = false;
-            geometryX = 4;
-            geometryY = 1.3;
+            geometryX = 1.92;
+            geometryY = 1.08;
             break;
         }
         case 'simpleTruchetPattern':{
             fragmentShader = stpFs;
             vertexShader = stpVs;
             doRotate = false;
-            geometryX = 7.3;
-            geometryY = 3.8;
+            geometryX = 5.6;
+            geometryY = 3;
             break;
         }
 
