@@ -5,7 +5,7 @@
             <template #navbar-before>
 
                 <div class="search_content">
-                    <input type="text" class="search_input" v-model="searchText" placeholder="search" @input="search" @change="search">
+                    <input type="text" class="search_input" v-model="searchText" placeholder="search title" @input="search" @change="search">
                     <div class="iconfont icon-close" v-if="searchText.length>0" @click="clearSearch"></div>
                     <div class="recommend_list" v-if="recommendList.length>0">
                         <p v-for="item in recommendList" @click.stop="toggle(item)">{{item.innerText}}</p>
@@ -152,7 +152,13 @@ const search = (e:Event)=>{
     if(!searchText.value) {
         recommendList.value = []
         return};
-    const target:NodeList = document.querySelectorAll('.theme-default-content>div>h1,.theme-default-content>div>h2,.theme-default-content>div>h3,.theme-default-content>div>h4,.theme-default-content>div>h3,.theme-default-content>div>h5,.theme-default-content>div>h3,.theme-default-content>div>h6')
+    const target:NodeList = document.querySelectorAll(`
+    .theme-default-content>div>h1,
+    .theme-default-content>div>h2,
+    .theme-default-content>div>h3,
+    .theme-default-content>div>h4,
+    .theme-default-content>div>h6,
+    .theme-default-content>div>h7`)
     recommendList.value =  [].filter.call(target,(item:HTMLElement):any=>{
         return item.innerText.indexOf(searchText.value)!==-1
     })
@@ -166,7 +172,6 @@ const clearSearch = ()=>{
 const toggle = (item:HTMLElement)=>{
     const top = item.getBoundingClientRect().top;
     if(window&&top){
-        console.log(item,top)
         window.scrollBy({top:top,behavior:'smooth'});
     }
 }
@@ -256,18 +261,18 @@ const toggle = (item:HTMLElement)=>{
 
 .search_content{
     float: right;
-    margin-right: 20px;
+    margin: 2px 20px 0 0;
     input{
-        width: 140px;
         height: 1.8rem;
         padding: 0;
-        border: none;
+        border: 1px dotted var(--c-bg);
+        outline: none;
         transition: all 1s;
-        background-color: var(--c-text);
+        background-color: var(--c-bg-lighter);
         font-size: 1.5em;
         border-radius: 5px;
         padding-left: 1px;
-        color: var(--c-brand);
+        color: var(--c-text);
     }
 
     .icon-close{
@@ -277,7 +282,7 @@ const toggle = (item:HTMLElement)=>{
     }
     .recommend_list{
         position: absolute;
-        background-color: rgb(18, 35, 42);
+        background-color: rgb(69, 76, 80);
         padding: 1.5em 0.8em;
         border-radius: 8px;
         transition: all 1s;
