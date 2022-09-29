@@ -14,6 +14,8 @@ import vs from '@shaders/practice/usingStepDrawCircle/vertex.glsl'
 import squareFs from '@shaders/practice/usingStepDrawSquare/fragment.glsl'
 import squareVs from '@shaders/practice/usingStepDrawSquare/vertex.glsl'
 
+import uTimeFs from '@shaders/practice/usingStepDrawSquare/fragment_utime.glsl'
+
 const props = defineProps({
   type:String
 });
@@ -26,6 +28,10 @@ if(props.type){
             vertexShader = squareVs;
             break;
         } 
+        case 'utime':{
+            fragmentShader = uTimeFs;
+            break;
+        }
     }  
 }
 

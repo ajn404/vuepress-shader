@@ -17,7 +17,8 @@ float rect(vec2 pt, vec2 size ,vec2 center){
 }
 
 void main(){
-  float inRect = rect(v_position.xy,vec2(1.0),vec2(0.0));
-  vec3 color = vec3(0.4157, 0.2941, 0.2941) * inRect;
+  float inRect1 = rect(v_position.xy,vec2(0.3,0.3),vec2(0.5,0.5));
+  float inRect2 = rect(v_position.xy,vec2(1.1,0.5),vec2(0.5,-0.5));//设置宽度为1.0后放大边缘会有一条线
+  vec3 color = vec3(0.4157, 0.2941, 0.2941) * inRect1 + vec3(1.0,1.0,1.0) * inRect2;
   gl_FragColor=vec4(color,1.0);
 }

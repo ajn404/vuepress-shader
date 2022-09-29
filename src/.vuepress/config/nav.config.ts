@@ -53,6 +53,10 @@ const practice: NavbarGroup[] = [
                     {
                         text: 'step square',
                         link: `${practiceBaseUrl}stepDrawSquare`
+                    },
+                    {
+                        text: 'step square moving',
+                        link: `${practiceBaseUrl}movingSquare`
                     }
                 ]
             }
