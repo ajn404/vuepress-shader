@@ -57,6 +57,10 @@ const practice: NavbarGroup[] = [
                     {
                         text: 'step square moving',
                         link: `${practiceBaseUrl}movingSquare`
+                    },
+                    {
+                        text: 'tiling',
+                        link: `${practiceBaseUrl}usingTiling`
                     }
                 ]
             }
@@ -121,8 +125,12 @@ const note: NavbarGroup[] = [
                 text: 'example analyze',
                 children: [
                     {
-                        text: 'glsl collect',
+                        text: 'example',
                         link: `${noteBaseUrl}exampleGlslCollect`
+                    },
+                    {
+                        text: 'practice',
+                        link: `${noteBaseUrl}practiceGlslCollect`
                     }
                 ]
             }

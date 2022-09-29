@@ -16,6 +16,11 @@ import squareVs from '@shaders/practice/usingStepDrawSquare/vertex.glsl'
 
 import uTimeFs from '@shaders/practice/usingStepDrawSquare/fragment_utime.glsl'
 
+
+//@shaders/practice/usingTiling/
+import tilingFs from '@shaders/practice/usingTiling/fragment.glsl'
+import tilingVs from '@shaders/practice/usingTiling/vertex.glsl'
+
 const props = defineProps({
   type:String
 });
@@ -30,6 +35,12 @@ if(props.type){
         } 
         case 'utime':{
             fragmentShader = uTimeFs;
+            break;
+        }
+
+        case 'tiling':{
+            fragmentShader = tilingFs;
+            vertexShader = tilingVs;
             break;
         }
     }  
