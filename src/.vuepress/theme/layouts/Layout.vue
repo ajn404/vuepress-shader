@@ -2,7 +2,17 @@
 <template>
     <transition name="fade" mode="out-in" appear>
         <ParentLayout class="parent-layout" @click="closeAll">
-            <template #navbar-before></template>
+            <template #navbar-before>
+
+                <div class="search_content">
+                    <input type="text" class="search_input" v-model="searchText" placeholder="search" @input="search" @change="search">
+                    <div class="iconfont icon-close" v-if="searchText.length>0" @click="clearSearch"></div>
+                    <div class="recommend_list" v-if="recommendList.length>0">
+                        <p v-for="item in recommendList" @click.stop="toggle(item)">{{item.innerText}}</p>
+                    </div>
+                </div>
+
+            </template>
             <template #navbar-after>
                 <div class="navbar-after">
                     <div :class="menuClass">
@@ -62,6 +72,7 @@ const closeAll = () => {
     showCodeMirror.value = false;
     showIconCollection.value = false;
     backImg.value = ''
+    clearSearch()
 }
 const showMirror = () => {
     showCodeMirror.value = !showCodeMirror.value;
@@ -133,6 +144,33 @@ const changeStyle = () => {
 
 }
 
+const recommendList = ref([]);
+const searchText = ref("");
+
+
+const search = (e:Event)=>{
+    if(!searchText.value) {
+        recommendList.value = []
+        return};
+    const target:NodeList = document.querySelectorAll('.theme-default-content>div>h1,.theme-default-content>div>h2,.theme-default-content>div>h3,.theme-default-content>div>h4,.theme-default-content>div>h3,.theme-default-content>div>h5,.theme-default-content>div>h3,.theme-default-content>div>h6')
+    recommendList.value =  [].filter.call(target,(item:HTMLElement):any=>{
+        return item.innerText.indexOf(searchText.value)!==-1
+    })
+}
+
+const clearSearch = ()=>{
+    searchText.value = "";
+    recommendList.value = [];
+}
+
+const toggle = (item:HTMLElement)=>{
+    const top = item.getBoundingClientRect().top;
+    if(window&&top){
+        console.log(item,top)
+        window.scrollBy({top:top,behavior:'smooth'});
+    }
+}
+
 </script>
 <style lang="scss" scoped>
 .fixed-dialog {
@@ -163,10 +201,12 @@ const changeStyle = () => {
 
 
 @media screen and (max-width: 900px) {
-    .tool-menu {
+    .tool-menu,.search_content {
         display: none !important;
         ;
     }
+
+
 }
 
 .tool-menu {
@@ -212,5 +252,48 @@ const changeStyle = () => {
     }
 
 
+}
+
+.search_content{
+    float: right;
+    margin-right: 20px;
+    input{
+        width: 140px;
+        height: 1.8rem;
+        padding: 0;
+        border: none;
+        transition: all 1s;
+        background-color: var(--c-text);
+        font-size: 1.5em;
+        border-radius: 5px;
+        padding-left: 1px;
+        color: var(--c-brand);
+    }
+
+    .icon-close{
+        margin-left: -20px;
+        color: bisque;
+        z-index: 99;
+    }
+    .recommend_list{
+        position: absolute;
+        background-color: rgb(18, 35, 42);
+        padding: 1.5em 0.8em;
+        border-radius: 8px;
+        transition: all 1s;
+        max-height: 200px;
+        overflow-y: scroll;
+        p{
+            line-height: 1;
+            margin: 0;
+            padding: 10px 0;
+            color: var(--c-brand);
+            cursor: pointer;
+            &:hover{
+                color: var(--c-danger);
+            }
+
+        }
+    }
 }
 </style>
