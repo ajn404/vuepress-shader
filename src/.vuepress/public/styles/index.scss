@@ -10,6 +10,16 @@
   display: inline-block;
 }
 
+:root{
+  --font-family:'ag','yuyang',-apple-system,Ubuntu ;
+}
+
+*{
+  font-family: var(--font-family);
+}
+
+
+
 ::-webkit-scrollbar {
   width: 1em;
   width: 0;

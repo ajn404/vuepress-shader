@@ -37,15 +37,12 @@
 </template>
 <script setup lang="ts">
 import ParentLayout from "@vuepress/theme-default/lib/client/layouts/Layout.vue";
-import { ref, nextTick } from 'vue';
+import { ref } from 'vue';
 const showCodeMirror = ref(false);
 const showIconCollection = ref(false);
 const menuClass = ref(["tool-menu"]);
-
 const audiuClass = ref("icon-audio")
-
 const parentLayout = ref(null);
-
 
 const showMenu = ()=>{
     menuClass.value.push("active")
@@ -66,8 +63,6 @@ const slideDown = () => {
     }
 }
 
-
-
 const closeAll = () => {
     showCodeMirror.value = false;
     showIconCollection.value = false;
@@ -84,9 +79,6 @@ const showIcon = () => {
     showCodeMirror.value = false;
     backImg.value = ''
 }
-
-
-
 
 const speak = () => {
     let text = '', dom: HTMLElement = document.querySelector('.theme-default-content');
@@ -117,16 +109,7 @@ const toggleTop = () => {
     //scrollby是相对，scrollto是绝对
 }
 const backImg = ref("")
-
 const changeStyle = () => {
-    //操作很难逆转
-    // [].forEach.call(document.querySelectorAll("p,span,strong,th"), (item: any) => {
-    //     if (item.style.outline === '') {
-    //         item.style.outline =
-    //             "5px solid #" + (~~(Math.random() * (1 << 24))).toString(16);
-    //     }
-    // });
-
     const styleImages = [
         "/vuepress-shader/images/hutao1.png",
         "/vuepress-shader/images/hutao2.jpg",
@@ -190,28 +173,21 @@ const toggle = (item:HTMLElement)=>{
     overflow-y: scroll;
     max-height: 80vh;
     height: 80vh;
-
     &:hover {
         outline: 1px dotted salmon;
     }
-
     border-radius: 1rem;
 }
 
 .navbar-after {
     position: relative;
-
-
 }
-
 
 @media screen and (max-width: 900px) {
     .tool-menu,.search_content {
         display: none !important;
         ;
     }
-
-
 }
 
 .tool-menu {
@@ -265,13 +241,14 @@ const toggle = (item:HTMLElement)=>{
     input{
         height: 1.8rem;
         padding: 0;
-        border: 1px dotted var(--c-bg);
+        font-family:var(--font-family);
+        border: none;
         outline: none;
-        transition: all 1s;
-        background-color: var(--c-bg-lighter);
+        transition: all .5s;
+        background-image: linear-gradient(to right,var(--c-bg-lighter),var(--c-bg));
         font-size: 1.5em;
         border-radius: 5px;
-        padding-left: 1px;
+        padding: 1px 5px 0;
         color: var(--c-text);
     }
 

@@ -4,7 +4,23 @@
        url('/fonts/iconfont.woff') format('woff'),
        url('/fonts/iconfont.ttf') format('truetype');
 }
-/*https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=3616492*/
+
+@font-face {
+  font-family: "ag";
+  src: url('/fonts/ag.otf') format('woff'),
+  url('/fonts/ag.woff2') format('woff2'),
+       url('/fonts/ag.woff') format('woff');
+  ;
+}
+
+@font-face {
+  font-family: "ag";
+  src: url('/fonts/yuyang.woff2') format('woff2'),
+       url('/fonts/yuyang.woff') format('woff'),
+       url('/fonts/iconfont.ttf') format('truetype');
+       unicode-range: U+4E00-9FA5;
+}
+
 .icon-call:before {
   content: "\e663";
 }
