@@ -7,9 +7,10 @@
 
 @font-face {
   font-family: "yuyang";
-  src: url('/fonts/yuyang.ttf') format("truetype"),
+  src: 
        url('/fonts/yuyang.woff') format('woff'),
-       url('/fonts/iconfont.ttf') format('truetype');
+       url('/fonts/iconfont.ttf') format('truetype'),
+       url('/fonts/yuyang.ttf') format("truetype"),;
 }
 
 @font-face {
