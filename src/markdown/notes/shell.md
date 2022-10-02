@@ -89,3 +89,7 @@ Upgrading /Users/ajn404/Documents/blog/vuepress-shader/package.json
 
 Run yarn install to install new versions.
 ```
+
+### [font-spider](https://www.npmjs.com/package/font-spider)
+字体包压缩工具
+
