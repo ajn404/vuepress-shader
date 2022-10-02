@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-7f6d3115","path":"/markdown/practice/usingClamp.html","title":"clamp","lang":"en-US","frontmatter":{"title":"clamp"},"excerpt":"","headers":[],"git":{"updatedTime":1663314477000,"contributors":[{"name":"ajn404","email":"huiyuening00@gmail.com","commits":3}]},"filePathRelative":"markdown/practice/usingClamp.md"}');export{a as data};

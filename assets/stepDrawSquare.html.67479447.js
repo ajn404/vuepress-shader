@@ -1,0 +1,1 @@
+import{_ as o}from"./practice.step.2f1cd86d.js";import{_ as r,h as _,i as a,j as e,k as c,l}from"./app.d44df62d.js";import"./practice.setup.0dbf3b95.js";const s={};function p(i,m){const t=o,n=l("ClientOnly");return _(),a("div",null,[e(n,null,{default:c(()=>[e(t,{type:"Square"})]),_:1})])}var h=r(s,[["render",p],["__file","stepDrawSquare.html.vue"]]);export{h as default};

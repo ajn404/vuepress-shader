@@ -1,0 +1,1 @@
+import{_ as o}from"./practice.shapingFunction.e06f06cb.js";import{_,h as a,i as r,j as e,k as c,l}from"./app.d44df62d.js";import"./practice.setup.0dbf3b95.js";const s={};function i(p,m){const t=o,n=l("ClientOnly");return a(),r("div",null,[e(n,null,{default:c(()=>[e(t,{type:"rts"})]),_:1})])}var d=_(s,[["render",i],["__file","rotatingTheShape.html.vue"]]);export{d as default};

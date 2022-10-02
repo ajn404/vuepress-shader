@@ -1,0 +1,1 @@
+import{_ as o}from"./practice.step.2f1cd86d.js";import{_,h as c,i as l,j as e,k as s,l as r}from"./app.d44df62d.js";import"./practice.setup.0dbf3b95.js";const a={};function i(p,m){const t=o,n=r("ClientOnly");return c(),l("div",null,[e(n,null,{default:s(()=>[e(t)]),_:1})])}var h=_(a,[["render",i],["__file","usingStep.html.vue"]]);export{h as default};

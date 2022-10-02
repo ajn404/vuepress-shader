@@ -1,0 +1,1 @@
+import{_ as o}from"./example.wavePrint.33aa77ce.js";import{_,h as l,i as r,j as e,k as a,l as c}from"./app.d44df62d.js";import"./practice.setup.0dbf3b95.js";const s={};function m(i,p){const n=o,t=c("ClientOnly");return l(),r("div",null,[e(t,null,{default:a(()=>[e(n,{type:"ed209"})]),_:1})])}var h=_(s,[["render",m],["__file","ed209.html.vue"]]);export{h as default};

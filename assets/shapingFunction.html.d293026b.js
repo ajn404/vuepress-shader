@@ -1,0 +1,1 @@
+import{_ as o}from"./practice.shapingFunction.e06f06cb.js";import{_ as c,h as _,i as a,j as n,k as i,l}from"./app.d44df62d.js";import"./practice.setup.0dbf3b95.js";const s={};function r(p,m){const t=o,e=l("ClientOnly");return _(),a("div",null,[n(e,null,{default:i(()=>[n(t)]),_:1})])}var d=c(s,[["render",r],["__file","shapingFunction.html.vue"]]);export{d as default};

@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-2839a697","path":"/markdown/practice/usingTiling.html","title":"clamp","lang":"en-US","frontmatter":{"title":"clamp"},"excerpt":"","headers":[],"git":{"updatedTime":1664443699000,"contributors":[{"name":"ajn404","email":"huiyuening00@gmail.com","commits":1}]},"filePathRelative":"markdown/practice/usingTiling.md"}');export{t as data};

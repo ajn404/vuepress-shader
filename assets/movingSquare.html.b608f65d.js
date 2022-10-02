@@ -1,0 +1,1 @@
+import{_ as o}from"./practice.step.2f1cd86d.js";import{_,h as r,i as c,j as e,k as l,l as a}from"./app.d44df62d.js";import"./practice.setup.0dbf3b95.js";const s={};function i(m,p){const t=o,n=a("ClientOnly");return r(),c("div",null,[e(n,null,{default:l(()=>[e(t,{type:"utime"})]),_:1})])}var v=_(s,[["render",i],["__file","movingSquare.html.vue"]]);export{v as default};

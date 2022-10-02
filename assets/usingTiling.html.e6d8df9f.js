@@ -1,0 +1,1 @@
+import{_ as o}from"./practice.step.2f1cd86d.js";import{_ as l,h as _,i,j as n,k as c,l as s}from"./app.d44df62d.js";import"./practice.setup.0dbf3b95.js";const r={};function a(p,m){const e=o,t=s("ClientOnly");return _(),i("div",null,[n(t,null,{default:c(()=>[n(e,{type:"tiling"})]),_:1})])}var g=l(r,[["render",a],["__file","usingTiling.html.vue"]]);export{g as default};

@@ -1,0 +1,1 @@
+import{_ as t}from"./practice.blendingColors.f31a82d6.js";import{_ as l,h as r,i as _,j as n,k as c,l as s}from"./app.d44df62d.js";import"./practice.setup.0dbf3b95.js";const i={};function a(m,p){const e=t,o=s("ClientOnly");return r(),_("div",null,[n(o,null,{default:c(()=>[n(e)]),_:1})])}var C=l(i,[["render",a],["__file","blendingColorUniforms.html.vue"]]);export{C as default};

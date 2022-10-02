@@ -1,0 +1,1 @@
+import{_ as o}from"./example.wavePrint.33aa77ce.js";import{_ as i,h as _,i as r,j as e,k as l,l as s}from"./app.d44df62d.js";import"./practice.setup.0dbf3b95.js";const a={};function c(m,p){const t=o,n=s("ClientOnly");return _(),r("div",null,[e(n,null,{default:l(()=>[e(t,{type:"primitives"})]),_:1})])}var d=i(a,[["render",c],["__file","primitives.html.vue"]]);export{d as default};
